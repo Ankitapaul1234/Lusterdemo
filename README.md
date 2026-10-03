@@ -111,3 +111,52 @@ docker compose up -d --force-recreate
 
 Your existing frontend and backend deployments remain unaffected by this local Docker setup.
 
+
+
+
+
+
+
+## 🐳 Docker Hub Images
+
+The pre-built Docker images of Lustre Nail Studio are available on Docker Hub. You can pull and run them without building the images locally.
+
+### Docker Hub Repositories
+
+* **Backend:** [ankitapaul1234/lustre-backend](https://hub.docker.com/r/ankitapaul1234/lustre-backend)
+* **Frontend:** [ankitapaul1234/lustre-frontend](https://hub.docker.com/r/ankitapaul1234/lustre-frontend)
+
+### Step 1: Pull Docker Images
+
+```bash
+docker pull ankitapaul1234/lustre-backend:latest
+docker pull ankitapaul1234/lustre-frontend:latest
+```
+
+### Step 2: Run the Application
+
+```bash
+docker compose up -d
+```
+
+### Step 3: Access the Application
+
+* Frontend: http://localhost:8080
+* Backend: http://localhost:5000
+
+### Push Docker Images (For Developers)
+
+To publish updated images to Docker Hub:
+
+```bash
+docker push ankitapaul1234/lustre-backend:tagname
+docker push ankitapaul1234/lustre-frontend:tagname
+```
+
+Replace `tagname` with the desired image tag, such as `latest` or `v1.0`.
+
+### Stop the Application
+
+```bash
+docker compose down
+```
