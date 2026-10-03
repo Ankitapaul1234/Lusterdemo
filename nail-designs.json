@@ -1,0 +1,22 @@
+[
+  { "id": 1,  "file": "nail-01.jpg", "occasion": "Party",     "style": "Luxury",  "length": "Medium", "shape": "Almond",   "color": "Pink"  },
+  { "id": 2,  "file": "nail-02.jpg", "occasion": "Party",     "style": "Bold",    "length": "Short",  "shape": "Square",   "color": "Red"   },
+  { "id": 3,  "file": "nail-03.jpg", "occasion": "Wedding",   "style": "Elegant", "length": "Long",   "shape": "Coffin",   "color": "White" },
+  { "id": 4,  "file": "nail-04.jpg", "occasion": "Wedding",   "style": "Simple",  "length": "Medium", "shape": "Almond",   "color": "Nude"  },
+  { "id": 5,  "file": "nail-05.jpg", "occasion": "Casual",    "style": "Simple",  "length": "Short",  "shape": "Square",   "color": "Nude"  },
+  { "id": 6,  "file": "nail-06.jpg", "occasion": "Casual",    "style": "Cute",    "length": "Medium", "shape": "Almond",   "color": "Pink"  },
+  { "id": 7,  "file": "nail-07.jpg", "occasion": "Office",    "style": "Simple",  "length": "Short",  "shape": "Square",   "color": "Nude"  },
+  { "id": 8,  "file": "nail-08.jpg", "occasion": "Office",    "style": "Elegant", "length": "Medium", "shape": "Almond",   "color": "Black" },
+  { "id": 9,  "file": "nail-09.jpg", "occasion": "Vacation",  "style": "Bold",    "length": "Medium", "shape": "Stiletto", "color": "Red"   },
+  { "id": 10, "file": "nail-10.jpg", "occasion": "Vacation",  "style": "Cute",    "length": "Short",  "shape": "Square",   "color": "White" },
+  { "id": 11, "file": "nail-11.jpg", "occasion": "Party",     "style": "Elegant", "length": "Long",   "shape": "Coffin",   "color": "Black" },
+  { "id": 12, "file": "nail-12.jpg", "occasion": "Party",     "style": "Cute",    "length": "Medium", "shape": "Almond",   "color": "White" },
+  { "id": 13, "file": "nail-13.jpg", "occasion": "Wedding",   "style": "Luxury",  "length": "Long",   "shape": "Stiletto", "color": "White" },
+  { "id": 14, "file": "nail-14.jpg", "occasion": "Wedding",   "style": "Bold",    "length": "Medium", "shape": "Coffin",   "color": "Pink"  },
+  { "id": 15, "file": "nail-15.jpg", "occasion": "Casual",    "style": "Elegant", "length": "Medium", "shape": "Almond",   "color": "Nude"  },
+  { "id": 16, "file": "nail-16.jpg", "occasion": "Casual",    "style": "Luxury",  "length": "Long",   "shape": "Coffin",   "color": "Red"   },
+  { "id": 17, "file": "nail-17.jpg", "occasion": "Office",    "style": "Cute",    "length": "Short",  "shape": "Almond",   "color": "Nude"  },
+  { "id": 18, "file": "nail-18.jpg", "occasion": "Office",    "style": "Bold",    "length": "Medium", "shape": "Square",   "color": "Black" },
+  { "id": 19, "file": "nail-19.jpg", "occasion": "Vacation",  "style": "Simple",  "length": "Short",  "shape": "Square",   "color": "Pink"  },
+  { "id": 20, "file": "nail-20.jpg", "occasion": "Vacation",  "style": "Luxury",  "length": "Long",   "shape": "Stiletto", "color": "Any"   }
+]

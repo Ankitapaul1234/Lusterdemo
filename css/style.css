@@ -1,0 +1,1223 @@
+
+:root{--ink:#241f20;--muted:#756c6d;--cream:#fbf7f2;--rose:#ead7d4;--blush:#f3e5e0;--line:#dfd5d1;--card:#fff;--input:#fcfaf8;--accent:#a66d68;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
+html[data-theme=dark]{--ink:#f4ece8;--muted:#b9abaa;--cream:#171415;--rose:#302324;--blush:#2a2021;--line:#443738;--card:#211b1c;--input:#261f20;--accent:#d69a94}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;transition:.25s}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}::selection{background:var(--ink);color:var(--cream)}
+.announcement{height:38px;background:#241f20;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.08em;position:relative}.announcement button{position:absolute;right:22px;border:0;background:none;color:#fff;font-size:20px}
+.header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--cream) 94%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.18em;font-size:15px}.brand-mark{width:30px;height:30px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:17px}
+.nav{display:flex;align-items:center;gap:26px;font-size:13px}.nav>a:not(.nav-cta){color:var(--muted)}.nav>a:hover{color:var(--accent)}.nav-cta{padding:11px 17px;border:1px solid var(--ink);border-radius:30px}.nav-cta:hover{background:var(--ink);color:var(--cream)}.theme-toggle{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:17px}.menu-toggle{display:none;border:0;background:none;color:var(--ink);font-size:25px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--accent);margin-bottom:17px}h1,h2{font-family:var(--serif);font-weight:500;line-height:1.03;letter-spacing:-.035em}h1{font-size:clamp(52px,7vw,90px)}h2{font-size:clamp(42px,5vw,68px)}em{color:var(--accent);font-weight:500}.button{display:inline-flex;align-items:center;justify-content:center;gap:22px;padding:15px 22px;background:var(--ink);color:var(--cream);border-radius:4px;font-size:13px;font-weight:700;transition:.25s}.button:hover{transform:translateY(-2px);box-shadow:0 12px 28px #0002}.text-link{font-size:13px;font-weight:700;border-bottom:1px solid var(--accent);padding-bottom:4px}.text-link span{margin-left:8px;color:var(--accent)}
+.page-hero{padding:105px 7% 90px;background:var(--rose);min-height:390px;display:flex;align-items:end}.page-hero p:last-child{max-width:560px;color:var(--muted);margin-top:25px}.section{padding:100px 7%}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:50px}.section-heading>p{max-width:350px;color:var(--muted);font-size:14px}
+.footer{background:var(--ink);color:var(--cream);padding:70px 7% 25px}.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px}.footer .brand-mark{border-color:var(--cream)}.footer p{font-size:12px;color:#aaa0a0;margin-top:16px}.footer h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#d7b1ac}.footer-bottom{border-top:1px solid #ffffff18;margin-top:55px;padding-top:18px;display:flex;justify-content:space-between;color:#8e8888;font-size:10px}
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.service-card{min-height:310px;padding:32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column}.service-card:hover{background:var(--blush)}.service-card.featured{background:var(--rose)}.service-icon{font-size:30px;color:var(--accent);margin-bottom:28px}.service-card>span{font-size:10px;color:var(--muted)}.service-card h3{font:500 31px var(--serif);margin:8px 0}.service-card p{font-size:13px;color:var(--muted);max-width:470px}.service-bottom{margin-top:auto;display:flex;justify-content:space-between;font-size:12px;padding-top:30px}.service-bottom a{color:var(--accent);font-weight:700}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:270px;gap:14px}.gallery-item.tall{grid-row:span 2}.gallery-item.wide{grid-column:span 2}.art{height:100%;position:relative;overflow:hidden}.art:after{content:"";position:absolute;inset:12%;border:1px solid #fff8;transform:rotate(12deg)}.art span{position:absolute;right:17px;top:14px;color:#fff;font-size:10px;z-index:2}.art1{background:radial-gradient(circle at 55% 45%,#fff7f4 0 13%,transparent 14%),linear-gradient(135deg,#b47772,#e6bcb7 55%,#f6ded8)}.art2{background:radial-gradient(ellipse at 40% 40%,#fff 0 9%,transparent 10%),linear-gradient(145deg,#d4aaa4,#8f6260)}.art3{background:radial-gradient(circle at 65% 35%,#fff4ec 0 12%,transparent 13%),linear-gradient(135deg,#c99b87,#e7c9b9)}.art4{background:linear-gradient(120deg,#edd9d1 0 30%,#b77b75 30% 60%,#f4e8e2 60%)}.art5{background:radial-gradient(circle at 35% 55%,#f8ebe4 0 15%,transparent 16%),linear-gradient(135deg,#8c6260,#d9ada5)}.art6{background:linear-gradient(135deg,#f2dfd7,#b27a73,#e8c5bc)}
+.booking-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:75px}.booking-intro p:not(.eyebrow){max-width:450px;color:var(--muted);font-size:14px;margin:25px 0}.booking-promise{font-size:13px;margin:14px 0}.booking-promise span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--rose);color:var(--accent);margin-right:8px}.booking-card{background:var(--card);padding:35px;box-shadow:0 25px 60px #0002}.step{font-size:12px;font-weight:700;margin-bottom:16px}.step span{color:var(--accent);margin-right:9px}.service-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:25px}.option{padding:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;justify-content:space-between;text-align:left;font-size:12px}.option small{color:var(--muted)}.option.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{font-size:11px;font-weight:600;display:block;margin-bottom:15px}label>span{display:block;color:var(--muted);margin-bottom:7px}input,select,textarea{width:100%;padding:13px;background:var(--input);color:var(--ink);border:1px solid var(--line);outline:0;border-radius:2px}textarea{resize:vertical}.full-button{width:100%;margin-top:5px}.disclaimer{text-align:center;color:var(--muted);font-size:10px;margin-top:11px}
+.notice{margin:0 7%;padding:32px 38px;background:var(--blush);display:flex;align-items:center;gap:20px}.notice-icon{width:42px;height:42px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:var(--serif);font-size:21px}.notice h3{font:500 24px var(--serif)}.notice p:not(.eyebrow){color:var(--muted);font-size:12px}.circle-arrow{margin-left:auto;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--cream);border:0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.about-visual{height:460px;background:var(--rose);display:grid;place-items:center;position:relative}.about-circle{width:290px;height:290px;border-radius:50%;background:var(--card);display:grid;place-items:center}.about-circle span{font:110px var(--serif);color:var(--accent)}.about-tag{position:absolute;right:24px;bottom:22px;font-size:10px;letter-spacing:.15em}.about-copy p:not(.eyebrow){color:var(--muted);font-size:14px;max-width:500px;margin:25px 0 30px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-card{padding:35px;background:var(--card);border:1px solid var(--line)}.contact-card h3{font:500 28px var(--serif);margin-bottom:10px}.contact-card p{font-size:13px;color:var(--muted)}.map-placeholder{height:300px;background:linear-gradient(135deg,var(--rose),var(--blush));display:grid;place-items:center;margin-top:20px;color:var(--accent);letter-spacing:.15em;font-size:11px}
+.testimonial{text-align:center;padding:100px 10%;background:var(--blush)}.quote{font:65px var(--serif);color:var(--accent)}blockquote{font:500 clamp(28px,4vw,48px)/1.2 var(--serif);max-width:850px;margin:auto}.reviewer{font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:24px}
+.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;padding:20px;z-index:50}.modal.show{display:grid}.modal-box{position:relative;width:min(480px,100%);background:var(--cream);padding:45px;text-align:center}.modal-close{position:absolute;right:17px;top:12px;border:0;background:none;color:var(--ink);font-size:24px}.modal-check{width:55px;height:55px;border-radius:50%;background:var(--rose);color:var(--accent);display:grid;place-items:center;margin:0 auto 20px;font-size:24px}.modal-box p:not(.eyebrow){font-size:13px;color:var(--muted);margin:15px 0 25px}
+@media(max-width:900px){.nav{gap:14px}.footer-top{grid-template-columns:1fr 1fr}.booking-layout,.about-grid{grid-template-columns:1fr;gap:45px}}
+@media(max-width:680px){.header{height:70px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:70px;left:0;right:0;background:var(--cream);padding:20px 7%;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}.nav.open{display:flex}.nav-cta{text-align:center}.page-hero{padding:75px 7%}.section{padding:70px 7%}.section-heading{display:block}.section-heading>p{margin-top:20px}.service-grid,.service-options,.form-row,.contact-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px}.gallery-item.tall{grid-row:span 2}.gallery-item.wide{grid-column:1/3}.booking-card{padding:22px}.notice{margin:0 7%;padding:25px;align-items:flex-start}.circle-arrow{display:none}.about-visual{height:350px}.about-circle{width:220px;height:220px}.about-circle span{font-size:80px}.footer-top{grid-template-columns:1fr}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}}
+/* =====================================================
+   STUDIO NOTICE
+===================================================== */
+
+.notice {
+    margin-top: 0 !important;
+    margin-bottom: 0;
+
+    border-radius: 0;
+
+    position: relative;
+}
+
+/* Remove extra spacing between the services section
+   and the notice */
+
+.section + .notice {
+    margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   GALLERY PHOTOS & VIDEO
+========================================= */
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--rose);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+/* Zoom effect */
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.08);
+}
+
+
+/* Overlay */
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 20px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.65),
+        transparent 60%
+    );
+
+    color: white;
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+}
+
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+
+.gallery-overlay span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+
+/* Video */
+
+.video-item {
+    min-height: 270px;
+}
+
+
+.video-overlay {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.video-overlay span {
+    padding: 12px 20px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(8px);
+
+    border-radius: 30px;
+
+    font-size: 13px;
+}
+
+
+.video-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.gallery-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.video-item {
+    position: relative;
+}
+
+.video-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.85);
+    color: #a66d68;
+
+    font-size: 28px;
+
+    padding-left: 5px;
+
+    transition: 0.3s ease;
+
+    z-index: 5;
+}
+
+.video-item:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: white;
+}
+
+
+
+.instagram-item {
+    position: relative;
+}
+
+.instagram-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.plus-button {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent);
+
+    font-size: 38px;
+    font-weight: 300;
+
+    z-index: 5;
+
+    transition: 0.3s ease;
+}
+
+.instagram-item:hover .plus-button {
+    transform: translate(-50%, -50%) scale(1.15);
+
+    background: var(--accent);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   AI PAGE — DARK MODE
+   Matches the main Lustre website dark theme
+===================================================== */
+
+html[data-theme="dark"] {
+
+    --ai-cream: #171515;
+    --ai-white: #211e1f;
+    --ai-ink: #f5f1f1;
+    --ai-muted: #b8b0b1;
+
+    --ai-accent: #d79aaa;
+    --ai-accent-dark: #bd788e;
+
+    --ai-rose: #9b6474;
+    --ai-blush: #3a292e;
+
+    --ai-gold: #c9a46d;
+
+    --ai-line: #3a3435;
+    --ai-soft: #292526;
+
+    --ai-shadow:
+        0 25px 70px rgba(0, 0, 0, .35);
+
+    --ai-shadow-small:
+        0 12px 35px rgba(0, 0, 0, .25);
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+html[data-theme="dark"] body {
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(215,154,170,.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(201,164,109,.05),
+            transparent 25%
+        ),
+        var(--ai-cream);
+
+    color: var(--ai-ink);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+html[data-theme="dark"] .ai-eyebrow {
+
+    background:
+        rgba(255,255,255,.04);
+
+    border-color:
+        var(--ai-line);
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .ai-hero p {
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] .ai-hero h1 em {
+
+    color:
+        var(--ai-accent);
+}
+
+
+/* =====================================================
+   ASSISTANT WINDOW
+===================================================== */
+
+html[data-theme="dark"] .assistant-window {
+
+    background:
+        #211e1f;
+
+    border-color:
+        var(--ai-line);
+
+    box-shadow:
+        var(--ai-shadow);
+}
+
+
+html[data-theme="dark"] .assistant-header {
+
+    background:
+        #211e1f;
+
+    border-color:
+        var(--ai-line);
+}
+
+
+/* =====================================================
+   ASSISTANT PROFILE
+===================================================== */
+
+html[data-theme="dark"] .assistant-avatar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #8c4b65,
+            #b9798d
+        );
+
+    color:
+        #fff;
+}
+
+
+html[data-theme="dark"] .assistant-online {
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] .assistant-label {
+
+    background:
+        var(--ai-soft);
+
+    color:
+        var(--ai-accent);
+}
+
+
+/* =====================================================
+   AI MESSAGE
+===================================================== */
+
+html[data-theme="dark"] .ai-mini-avatar {
+
+    background:
+        var(--ai-blush);
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .ai-bubble {
+
+    background:
+        var(--ai-soft);
+
+    border-color:
+        var(--ai-line);
+
+    color:
+        var(--ai-ink);
+}
+
+
+html[data-theme="dark"] .ai-bubble strong {
+
+    color:
+        var(--ai-accent);
+}
+
+
+/* =====================================================
+   PREFERENCE SECTION
+===================================================== */
+
+html[data-theme="dark"] .preference-count {
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] .preference-card {
+
+    background:
+        #211e1f;
+
+    border-color:
+        var(--ai-line);
+}
+
+
+html[data-theme="dark"] .preference-card:hover {
+
+    border-color:
+        var(--ai-rose);
+
+    box-shadow:
+        var(--ai-shadow-small);
+}
+
+
+html[data-theme="dark"] .preference-number {
+
+    background:
+        var(--ai-soft);
+
+    color:
+        var(--ai-accent);
+}
+
+
+/* =====================================================
+   OPTION BUTTONS
+===================================================== */
+
+html[data-theme="dark"] .option-btn {
+
+    background:
+        #292526;
+
+    border-color:
+        var(--ai-line);
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] .option-btn:hover {
+
+    background:
+        #302a2c;
+
+    border-color:
+        var(--ai-accent);
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .option-btn.selected {
+
+    background:
+        var(--ai-accent);
+
+    border-color:
+        var(--ai-accent);
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 7px 17px
+        rgba(215,154,170,.18);
+}
+
+
+/* =====================================================
+   SEARCH AREA
+===================================================== */
+
+html[data-theme="dark"] .ai-search-area {
+
+    border-color:
+        var(--ai-line);
+}
+
+
+html[data-theme="dark"] .ai-thinking-note {
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] #search-btn {
+
+    background:
+        var(--ai-accent);
+
+    color:
+        #ffffff;
+}
+
+
+html[data-theme="dark"] #search-btn:hover:not(:disabled) {
+
+    background:
+        var(--ai-accent-dark);
+}
+
+
+/* =====================================================
+   RESULTS
+===================================================== */
+
+html[data-theme="dark"] .results-eyebrow {
+
+    color:
+        var(--ai-gold);
+}
+
+
+html[data-theme="dark"] .results-top h2 em {
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] #results-note {
+
+    color:
+        var(--ai-muted);
+}
+
+
+/* =====================================================
+   DESIGN CARDS
+===================================================== */
+
+html[data-theme="dark"] .design-card {
+
+    background:
+        #211e1f;
+
+    border-color:
+        var(--ai-line);
+}
+
+
+html[data-theme="dark"] .design-card:hover {
+
+    border-color:
+        var(--ai-rose);
+
+    box-shadow:
+        0 25px 55px
+        rgba(0,0,0,.35);
+}
+
+
+/* =====================================================
+   IMAGE AREA
+===================================================== */
+
+html[data-theme="dark"] .image-wrapper {
+
+    background:
+        #292526;
+}
+
+
+/* =====================================================
+   SCORE BADGE
+===================================================== */
+
+html[data-theme="dark"] .score-badge {
+
+    background:
+        rgba(33,30,31,.95);
+
+    color:
+        var(--ai-accent);
+
+    box-shadow:
+        0 6px 20px
+        rgba(0,0,0,.25);
+}
+
+
+/* =====================================================
+   HEART
+===================================================== */
+
+html[data-theme="dark"] .heart-btn {
+
+    background:
+        rgba(33,30,31,.95);
+
+    color:
+        var(--ai-accent);
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+html[data-theme="dark"] .design-category {
+
+    color:
+        var(--ai-gold);
+}
+
+
+html[data-theme="dark"] .design-title {
+
+    color:
+        var(--ai-ink);
+}
+
+
+/* =====================================================
+   TAGS
+===================================================== */
+
+html[data-theme="dark"] .tag {
+
+    background:
+        #292526;
+
+    border-color:
+        var(--ai-line);
+
+    color:
+        var(--ai-muted);
+}
+
+
+/* =====================================================
+   CARD BUTTONS
+===================================================== */
+
+html[data-theme="dark"] .design-actions a {
+
+    border-color:
+        var(--ai-accent);
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .design-actions a:first-child {
+
+    background:
+        var(--ai-accent);
+
+    color:
+        #ffffff;
+}
+
+
+html[data-theme="dark"] .design-actions a:hover {
+
+    background:
+        var(--ai-accent-dark);
+
+    border-color:
+        var(--ai-accent-dark);
+
+    color:
+        #ffffff;
+}
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+html[data-theme="dark"] .placeholder {
+
+    color:
+        var(--ai-muted);
+}
+
+
+html[data-theme="dark"] .placeholder strong {
+
+    color:
+        var(--ai-ink);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+html[data-theme="dark"] .empty-state {
+
+    background:
+        #211e1f;
+
+    border-color:
+        var(--ai-line);
+}
+
+
+html[data-theme="dark"] .empty-state h3 {
+
+    color:
+        var(--ai-ink);
+}
+
+
+html[data-theme="dark"] .empty-state p {
+
+    color:
+        var(--ai-muted);
+}
+
+
+/* =====================================================
+   AI INFORMATION BOX
+===================================================== */
+
+html[data-theme="dark"] .ai-info-box {
+
+    background:
+        var(--ai-soft);
+
+    border-color:
+        var(--ai-line);
+}
+
+
+html[data-theme="dark"] .ai-info-icon {
+
+    background:
+        var(--ai-blush);
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .ai-info-title {
+
+    color:
+        var(--ai-accent);
+}
+
+
+html[data-theme="dark"] .ai-info p {
+
+    color:
+        var(--ai-muted);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   LUSTRE DESIGN ASSISTANT
+===================================================== */
+
+.design-assistant-banner {
+    position: relative;
+    margin: 0;
+    padding: 100px 7%;
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+}
+
+.design-assistant-banner::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.12);
+    right: -160px;
+    top: -180px;
+}
+
+.design-assistant-banner::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: var(--rose);
+    opacity: .12;
+    left: -130px;
+    bottom: -150px;
+}
+
+.design-assistant-content {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    align-items: center;
+    gap: 45px;
+    position: relative;
+    z-index: 2;
+}
+
+.ai-robot {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--blush);
+    font-size: 75px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.18),
+        inset 0 0 0 1px rgba(255,255,255,.25);
+    animation: robotFloat 3s ease-in-out infinite;
+}
+
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+.ai-label {
+    margin: 0 0 12px;
+    color: var(--rose);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.design-assistant-content h2 {
+    margin: 0 0 16px;
+    font-family: var(--serif);
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1;
+    letter-spacing: -.035em;
+}
+
+.design-assistant-content h2 em {
+    color: var(--rose);
+    font-style: italic;
+}
+
+.design-assistant-content p {
+    max-width: 570px;
+    margin: 0;
+    color: rgba(255,255,255,.68);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.ai-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 25px;
+    background: var(--cream);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: .3s ease;
+}
+
+.ai-button:hover {
+    background: var(--rose);
+    color: var(--ink);
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   ABOUT LUSTRE CTA
+===================================================== */
+
+.about-lustre-cta {
+    padding: 100px 7%;
+    background: var(--cream);
+}
+
+.about-lustre-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 65px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: var(--card);
+}
+
+.about-lustre-text .eyebrow {
+    margin-bottom: 15px;
+}
+
+.about-lustre-text h2 {
+    margin: 0 0 15px;
+    font-family: var(--serif);
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -.03em;
+}
+
+.about-lustre-text h2 em {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.about-lustre-text p {
+    max-width: 600px;
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.about-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: .3s ease;
+}
+
+.about-button:hover {
+    background: var(--ink);
+    color: var(--cream);
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+/* 
+html[data-theme="dark"] .design-assistant-banner {
+    background: #211e1f;
+}
+
+html[data-theme="dark"] .ai-robot {
+    background: #3a292e;
+}
+
+html[data-theme="dark"] .ai-button {
+    background: var(--cream);
+    color: var(--ink);
+}
+
+html[data-theme="dark"] .ai-button:hover {
+    background: var(--rose);
+}
+
+html[data-theme="dark"] .about-lustre-cta {
+    background: var(--cream);
+}
+
+html[data-theme="dark"] .about-lustre-inner {
+    background: var(--card);
+} */
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .design-assistant-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 30px;
+    }
+
+    .design-assistant-content p {
+        margin: auto;
+    }
+
+    .ai-robot {
+        width: 130px;
+        height: 130px;
+        font-size: 62px;
+    }
+
+    .about-lustre-inner {
+        padding: 45px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .design-assistant-banner {
+        padding: 75px 7%;
+    }
+
+    .design-assistant-content h2 {
+        font-size: 42px;
+    }
+
+    .ai-robot {
+        width: 115px;
+        height: 115px;
+        font-size: 55px;
+    }
+
+    .ai-button,
+    .about-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-lustre-cta {
+        padding: 70px 7%;
+    }
+
+    .about-lustre-inner {
+        padding: 35px 25px;
+    }
+
+    .about-lustre-text h2 {
+        font-size: 40px;
+    }
+
+}
+
+
+
+/* =====================================================
+   DESIGN ASSISTANT — IMPROVED DARK MODE
+===================================================== */
+
+html[data-theme="dark"] .design-assistant-banner {
+    background: #181617;
+    color: #fff7f3;
+}
+
+/* Robot circle */
+html[data-theme="dark"] .ai-robot {
+    background: #3b2930;
+    border: 1px solid #b98a68;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 35px rgba(214, 163, 130, .12);
+}
+
+/* Small heading */
+html[data-theme="dark"] .ai-label {
+    color: #e2b47c;
+}
+
+/* Main heading */
+html[data-theme="dark"] .design-assistant-content h2 {
+    color: #fff8f4;
+}
+
+html[data-theme="dark"] .design-assistant-content h2 em {
+    color: #e5a6b8;
+}
+
+/* Description */
+html[data-theme="dark"] .design-assistant-content p {
+    color: #d2c6c8;
+}
+
+/* Button */
+html[data-theme="dark"] .ai-button {
+    background: #e5b982;
+    color: #21191b;
+    border: 1px solid #e5b982;
+}
+
+html[data-theme="dark"] .ai-button:hover {
+    background: #e5a6b8;
+    border-color: #e5a6b8;
+    color: #21191b;
+}
+
+
+
+/* =====================================================
+   DESIGN ASSISTANT - LIGHT MODE
+===================================================== */
+
+html[data-theme="light"] .design-assistant-banner {
+    background: #f4e7e9 !important;
+}
+
+html[data-theme="light"] .design-assistant-banner .ai-label {
+    color: #8c4b65 !important;
+    opacity: 1 !important;
+}
+
+html[data-theme="light"] .design-assistant-banner
+.design-assistant-content h2 {
+    color: #2c2427 !important;
+}
+
+html[data-theme="light"] .design-assistant-banner
+.design-assistant-content h2 em {
+    color: #9b526b !important;
+}
+
+html[data-theme="light"] .design-assistant-banner
+.design-assistant-content > div:nth-child(2) > p:not(.ai-label) {
+    color: #65595d !important;
+    opacity: 1 !important;
+}
+
+html[data-theme="light"] .design-assistant-banner .ai-robot {
+    background: #ead0d6 !important;
+    border-color: #c58b9b !important;
+}
+
+html[data-theme="light"] .design-assistant-banner .ai-button {
+    background: #8c4b65 !important;
+    color: #ffffff !important;
+    border-color: #8c4b65 !important;
+}

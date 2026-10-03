@@ -1,0 +1,1395 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gallery | Lustre Nail Studio</title>
+
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================
+         MAIN CSS
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- =====================================================
+         GALLERY / DESIGN ASSISTANT STYLES
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           DESIGN ASSISTANT
+        ===================================================== */
+
+        .design-assistant-banner {
+
+            position: relative !important;
+
+            display: block !important;
+
+            width: 100% !important;
+
+            padding: 100px 7% !important;
+
+            background: #21191c !important;
+
+            color: #fff8f5 !important;
+
+            overflow: hidden !important;
+
+            box-sizing: border-box !important;
+        }
+
+
+        .design-assistant-content {
+
+            position: relative !important;
+
+            z-index: 5 !important;
+
+            max-width: 1150px !important;
+
+            margin: 0 auto !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                170px 1fr auto !important;
+
+            align-items: center !important;
+
+            gap: 45px !important;
+        }
+
+
+        .ai-robot {
+
+            width: 150px !important;
+
+            height: 150px !important;
+
+            display: grid !important;
+
+            place-items: center !important;
+
+            border-radius: 50% !important;
+
+            background: #493139 !important;
+
+            border: 2px solid #d9aa78 !important;
+
+            font-size: 72px !important;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, .35),
+                0 0 30px rgba(217, 170, 120, .15) !important;
+
+            animation:
+                robotFloat 3s ease-in-out infinite;
+        }
+
+
+        @keyframes robotFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+        .ai-label {
+
+            display: block !important;
+
+            margin: 0 0 14px !important;
+
+            color: #e3b878 !important;
+
+            font-family:
+                "DM Sans",
+                sans-serif !important;
+
+            font-size: 11px !important;
+
+            font-weight: 700 !important;
+
+            letter-spacing: .18em !important;
+
+            text-transform: uppercase !important;
+        }
+
+
+        .design-assistant-content h2 {
+
+            display: block !important;
+
+            margin: 0 0 18px !important;
+
+            color: #fff8f5 !important;
+
+            font-family:
+                "Playfair Display",
+                serif !important;
+
+            font-size:
+                clamp(38px, 5vw, 65px) !important;
+
+            line-height: 1.05 !important;
+
+            font-weight: 500 !important;
+
+            letter-spacing: -.035em !important;
+        }
+
+
+        .design-assistant-content h2 em {
+
+            color: #e5a6b8 !important;
+
+            font-style: italic !important;
+        }
+
+
+        .design-assistant-content p:not(.ai-label) {
+
+            display: block !important;
+
+            max-width: 600px !important;
+
+            margin: 0 !important;
+
+            color: #ddd0d2 !important;
+
+            font-family:
+                "DM Sans",
+                sans-serif !important;
+
+            font-size: 15px !important;
+
+            line-height: 1.7 !important;
+        }
+
+
+        .ai-button {
+
+            display: inline-flex !important;
+
+            align-items: center !important;
+
+            justify-content: center !important;
+
+            gap: 10px !important;
+
+            padding: 17px 26px !important;
+
+            background: #e3b878 !important;
+
+            color: #241b1e !important;
+
+            border: 1px solid #e3b878 !important;
+
+            text-decoration: none !important;
+
+            font-family:
+                "DM Sans",
+                sans-serif !important;
+
+            font-size: 12px !important;
+
+            font-weight: 700 !important;
+
+            white-space: nowrap !important;
+
+            transition: all .3s ease !important;
+        }
+
+
+        .ai-button:hover {
+
+            background: #e5a6b8 !important;
+
+            border-color: #e5a6b8 !important;
+
+            color: #241b1e !important;
+
+            transform: translateY(-3px);
+        }
+
+
+        .design-assistant-banner::before {
+
+            content: "" !important;
+
+            position: absolute !important;
+
+            width: 430px !important;
+
+            height: 430px !important;
+
+            right: -180px !important;
+
+            top: -200px !important;
+
+            border-radius: 50% !important;
+
+            border:
+                1px solid
+                rgba(227, 184, 120, .25) !important;
+
+            pointer-events: none !important;
+        }
+
+
+        .design-assistant-banner::after {
+
+            content: "" !important;
+
+            position: absolute !important;
+
+            width: 300px !important;
+
+            height: 300px !important;
+
+            left: -150px !important;
+
+            bottom: -170px !important;
+
+            border-radius: 50% !important;
+
+            background:
+                rgba(229, 166, 184, .08) !important;
+
+            pointer-events: none !important;
+        }
+
+
+        /* =====================================================
+           DESIGN ASSISTANT — LIGHT MODE
+        ===================================================== */
+
+        html[data-theme="light"]
+        .design-assistant-banner {
+
+            background: #f4e7e9 !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .ai-label {
+
+            color: #8c4b65 !important;
+
+            opacity: 1 !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .design-assistant-content h2 {
+
+            color: #2c2427 !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .design-assistant-content h2 em {
+
+            color: #9b526b !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .design-assistant-content
+        > div:nth-child(2)
+        > p:not(.ai-label) {
+
+            color: #65595d !important;
+
+            opacity: 1 !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .ai-robot {
+
+            background: #ead0d6 !important;
+
+            border-color: #c58b9b !important;
+        }
+
+
+        html[data-theme="light"]
+        .design-assistant-banner
+        .ai-button {
+
+            background: #8c4b65 !important;
+
+            color: #ffffff !important;
+
+            border-color: #8c4b65 !important;
+        }
+
+
+        /* =====================================================
+           CUSTOMER SUPPORT BUTTON
+        ====================================================== */
+
+        .support-floating-btn {
+
+            position: fixed;
+
+            right: 28px;
+
+            bottom: 28px;
+
+            width: 62px;
+
+            height: 62px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #b76e79;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px
+                rgba(80, 40, 45, 0.25);
+
+            z-index: 9998;
+
+            transition: all 0.25s ease;
+        }
+
+
+        .support-floating-btn:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.04);
+
+            box-shadow:
+                0 16px 35px
+                rgba(80, 40, 45, 0.32);
+        }
+
+
+        /* =====================================================
+           NEED HELP LABEL
+        ====================================================== */
+
+        .support-floating-label {
+
+            position: fixed;
+
+            right: 100px;
+
+            bottom: 40px;
+
+            background:
+                var(--card, #ffffff);
+
+            color:
+                var(--text, #292326);
+
+            padding: 10px 15px;
+
+            border-radius: 20px;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px
+                rgba(50, 30, 35, 0.12);
+
+            border:
+                1px solid
+                rgba(180, 120, 130, 0.15);
+
+            z-index: 9997;
+
+            white-space: nowrap;
+
+            animation:
+                supportLabelFloat
+                3s ease-in-out infinite;
+        }
+
+
+        @keyframes supportLabelFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
+
+        }
+
+
+        /* =====================================================
+           CUSTOMER SUPPORT POPUP
+        ====================================================== */
+
+        .support-popup {
+
+            position: fixed;
+
+            right: 28px;
+
+            bottom: 105px;
+
+            width: 420px;
+
+            height: 680px;
+
+            background: #ffffff;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px
+                rgba(50, 30, 35, 0.25);
+
+            border:
+                1px solid
+                rgba(180, 120, 130, 0.18);
+
+            z-index: 9999;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(20px)
+                scale(0.96);
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        /* =====================================================
+           OPEN POPUP
+        ====================================================== */
+
+        .support-popup.open {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+
+        /* =====================================================
+           SUPPORT IFRAME
+        ====================================================== */
+
+        .support-popup iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ====================================================== */
+
+        .support-close {
+
+            position: absolute;
+
+            top: 12px;
+
+            right: 12px;
+
+            width: 34px;
+
+            height: 34px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.95);
+
+            color: #333;
+
+            font-size: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.15);
+
+            transition: 0.2s ease;
+        }
+
+
+        .support-close:hover {
+
+            transform: rotate(90deg);
+
+            background: #f3e4e6;
+        }
+
+
+        /* =====================================================
+           SUPPORT DARK MODE
+        ====================================================== */
+
+        [data-theme="dark"]
+        .support-popup {
+
+            background: #211c1e;
+
+            border-color: #3a3033;
+        }
+
+
+        [data-theme="dark"]
+        .support-floating-label {
+
+            background: #211c1e;
+
+            color: #f7eeee;
+
+            border-color: #3a3033;
+        }
+
+
+        /* =====================================================
+           DESIGN ASSISTANT — TABLET
+        ====================================================== */
+
+        @media (max-width: 850px) {
+
+            .design-assistant-banner {
+
+                padding: 80px 7% !important;
+            }
+
+
+            .design-assistant-content {
+
+                grid-template-columns:
+                    1fr !important;
+
+                text-align: center !important;
+
+                justify-items: center !important;
+
+                gap: 30px !important;
+            }
+
+
+            .design-assistant-content
+            p:not(.ai-label) {
+
+                margin: 0 auto !important;
+            }
+
+
+            .ai-robot {
+
+                width: 130px !important;
+
+                height: 130px !important;
+
+                font-size: 62px !important;
+            }
+
+
+            .ai-button {
+
+                width: 100% !important;
+            }
+
+        }
+
+
+        /* =====================================================
+           SUPPORT — MOBILE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .support-floating-btn {
+
+                width: 56px;
+
+                height: 56px;
+
+                right: 18px;
+
+                bottom: 18px;
+
+                font-size: 22px;
+            }
+
+
+            .support-floating-label {
+
+                display: none;
+            }
+
+
+            .support-popup {
+
+                left: 10px;
+
+                right: 10px;
+
+                bottom: 85px;
+
+                width: auto;
+
+                height:
+                    calc(100vh - 110px);
+
+                max-height: 720px;
+
+                border-radius: 22px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 500px) {
+
+            .design-assistant-content h2 {
+
+                font-size: 40px !important;
+            }
+
+
+            .ai-robot {
+
+                width: 115px !important;
+
+                height: 115px !important;
+
+                font-size: 55px !important;
+            }
+
+
+            .ai-button {
+
+                width: 100%;
+
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                L
+            </span>
+
+            <span>
+                LUSTRE
+            </span>
+
+        </a>
+
+
+        <!-- Mobile Menu -->
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav"
+            id="nav"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a
+                href="gallery.html"
+                class="active"
+            >
+                Gallery
+            </a>
+
+            <a href="booking.html">
+                Book
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+
+            <!-- Dark Mode -->
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                onclick="toggleTheme()"
+            >
+                ☾
+            </button>
+
+
+            <a
+                href="booking.html"
+                class="nav-cta"
+            >
+                Book appointment ↗
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HERO
+        ================================================= -->
+
+        <section class="page-hero">
+
+            <div>
+
+                <p class="eyebrow">
+                    THE LUSTRE LOOK
+                </p>
+
+                <h1>
+                    Find your
+                    <br>
+                    <em>next set.</em>
+                </h1>
+
+                <p>
+                    From minimal neutrals to playful statement art,
+                    explore our studio's visual language.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GALLERY
+        ================================================= -->
+
+        <section class="section">
+
+            <div class="gallery-grid">
+
+
+                <!-- =========================
+                     IMAGE 1
+                ========================== -->
+
+                <div class="gallery-item tall">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"
+                        alt="Elegant nail art"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span>
+                            01 · Minimal Elegance
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     IMAGE 2
+                ========================== -->
+
+                <div class="gallery-item">
+
+                    <img
+                        src="assets/nail5.jpg"
+                        alt="Beautiful manicure"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span>
+                            02 · Modern Style
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     IMAGE 3
+                ========================== -->
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://plus.unsplash.com/premium_photo-1661497590552-93536b2b84b9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Creative nail art"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span>
+                            03 · Statement Art
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     BRIDAL TRANSFORMATION
+                ========================== -->
+
+                <div class="gallery-item wide video-item">
+
+                    <a
+                        href="https://share.google/TVtoVO9X7JFtgM0vb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <img
+                            src="https://people.com/thmb/eUDFa_8ykUkAM3t75xiX2Y2F2bw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x0:751x2)/bridal-nail-transformation-022026-ed0275248a404a99abf85e9237add1d0.jpg"
+                            alt="Bridal nail transformation"
+                        >
+
+
+                        <!-- Play Button -->
+
+                        <div class="play-button">
+                            ▶
+                        </div>
+
+
+                        <div class="gallery-overlay">
+
+                            <span>
+                                ✨ Click to watch the transformation
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     IMAGE 4
+                ========================== -->
+
+                <div class="gallery-item">
+
+                    <img
+                        src="assets/nail4.jpg"
+                        alt="Luxury nail design"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span>
+                            04 · Luxury Finish
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     IMAGE 5 / INSTAGRAM
+                ========================== -->
+
+                <div class="gallery-item instagram-item">
+
+                    <a
+                        href="https://www.instagram.com/bipashas_nailart/?hl=en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <img
+                            src="assets/nail2.jpg"
+                            alt="Modern manicure"
+                        >
+
+
+                        <!-- Plus Button -->
+
+                        <div class="plus-button">
+                            +
+                        </div>
+
+
+                        <div class="gallery-overlay">
+
+                            <span>
+                                05 · See more on Instagram
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LUSTRE DESIGN ASSISTANT
+        ================================================= -->
+
+        <section class="design-assistant-banner">
+
+            <div class="design-assistant-content">
+
+
+                <!-- Robot -->
+
+                <div class="ai-robot">
+                    🤖
+                </div>
+
+
+                <!-- Text -->
+
+                <div>
+
+                    <p class="ai-label">
+                        MEET YOUR NAIL AI
+                    </p>
+
+                    <h2>
+
+                        Not sure what to get?
+
+                        <br>
+
+                        <em>
+                            Let Lustre decide.
+                        </em>
+
+                    </h2>
+
+                    <p>
+
+                        Tell our Design Assistant your occasion,
+                        style, nail shape, length and favourite colour.
+                        It will find nail designs that match your vibe.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Button -->
+
+                <a
+                    href="design.html"
+                    class="ai-button"
+                >
+                    ✨ Try Design Assistant →
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer
+        class="footer"
+        id="contact"
+    >
+
+        <div class="footer-top">
+
+
+            <!-- Brand -->
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="brand"
+                >
+
+                    <span class="brand-mark">
+                        L
+                    </span>
+
+                    <span>
+                        LUSTRE
+                    </span>
+
+                </a>
+
+                <p>
+                    Modern nail art & mindful beauty
+                    <br>
+                    in the heart of the city.
+                </p>
+
+            </div>
+
+
+            <!-- Visit -->
+
+            <div>
+
+                <h4>
+                    Visit
+                </h4>
+
+                <p>
+                    24 Rose Avenue
+                    <br>
+                    Kolkata, West Bengal
+                </p>
+
+            </div>
+
+
+            <!-- Hours -->
+
+            <div>
+
+                <h4>
+                    Hours
+                </h4>
+
+                <p>
+                    Mon–Sat · 10 AM–7 PM
+                    <br>
+                    Sunday · By appointment
+                </p>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div>
+
+                <h4>
+                    Say hello
+                </h4>
+
+                <p>
+                    +91 98765 43210
+                    <br>
+                    hello@lustrestudio.in
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Lustre Nail Studio
+            </span>
+
+            <span>
+                Instagram · Privacy · Terms
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         CUSTOMER SUPPORT FLOATING BUTTON
+    ====================================================== -->
+
+    <button
+        class="support-floating-btn"
+        id="supportFloatingBtn"
+        onclick="toggleSupport()"
+        aria-label="Open Lustre Customer Support"
+    >
+        💬
+    </button>
+
+
+    <!-- =====================================================
+         NEED HELP LABEL
+    ====================================================== -->
+
+    <div
+        class="support-floating-label"
+        id="supportFloatingLabel"
+    >
+        Need help? 💗
+    </div>
+
+
+    <!-- =====================================================
+         CUSTOMER SUPPORT POPUP
+    ====================================================== -->
+
+    <div
+        class="support-popup"
+        id="supportPopup"
+    >
+
+
+        <!-- Close button -->
+
+        <button
+            class="support-close"
+            onclick="toggleSupport()"
+            aria-label="Close customer support"
+        >
+            ×
+        </button>
+
+
+        <!-- Existing support.html -->
+
+        <iframe
+            src="support.html"
+            title="Lustre Customer Support"
+        ></iframe>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/script.js"></script>
+
+
+    <!-- =====================================================
+         CUSTOMER SUPPORT JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           CUSTOMER SUPPORT
+        ====================================================== */
+
+        const supportPopup =
+            document.getElementById("supportPopup");
+
+
+        const supportLabel =
+            document.getElementById("supportFloatingLabel");
+
+
+        function toggleSupport() {
+
+            supportPopup.classList.toggle("open");
+
+
+            /*
+             * Hide the "Need help?" label when
+             * the chatbot is open.
+             */
+
+            if (
+                supportPopup.classList.contains("open")
+            ) {
+
+                supportLabel.style.display = "none";
+
+            } else {
+
+                supportLabel.style.display = "";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CLOSE SUPPORT WITH ESCAPE
+        ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    supportPopup.classList.contains("open")
+                ) {
+
+                    toggleSupport();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
+

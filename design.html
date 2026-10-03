@@ -1,0 +1,5243 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Assistant — Studio Vernis</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #2B1830;
+  --cream: #FAF3EC;
+  --cream-dim: #F1E7DC;
+  --plum: #7A2E4D;
+  --plum-dark: #5A2039;
+  --rose: #E8B4B8;
+  --gold: #C9A15A;
+  --sage: #7C8F6E;
+  --display: 'Fraunces', serif;
+  --body: 'Work Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --border: 1px solid rgba(43, 24, 48, 0.14);
+  --shadow: 0 10px 30px rgba(43, 24, 48, 0.08);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+.site-nav { position: sticky; top: 0; z-index: 50; background: rgba(250, 243, 236, 0.88); backdrop-filter: blur(8px); border-bottom: var(--border); }
+.site-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.logo { font-family: var(--display); font-weight: 600; font-size: 1.35rem; letter-spacing: 0.01em; text-decoration: none; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.logo .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--plum); box-shadow: 4px 0 0 var(--gold), 8px 0 0 var(--sage); }
+.nav-links { display: flex; gap: 34px; list-style: none; margin: 0; padding: 0; font-size: 0.94rem; font-weight: 500; }
+.nav-links a { text-decoration: none; color: var(--ink); position: relative; padding: 6px 0; }
+.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--plum); transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
+.nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.nav-links a[aria-current="page"] { color: var(--plum-dark); }
+.nav-cta { background: var(--ink); color: var(--cream); border: none; padding: 11px 20px; border-radius: 999px; font-family: var(--body); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: transform .2s var(--ease), background .2s var(--ease); display: inline-block; }
+.nav-cta:hover { background: var(--plum); transform: translateY(-1px); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-family: var(--body); font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--ink); cursor: pointer; transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease); }
+.btn-primary { background: var(--ink); color: var(--cream); }
+.btn-primary:hover { background: var(--plum); border-color: var(--plum); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: rgba(43,24,48,0.3); }
+.btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+.btn-sm { padding: 9px 14px; font-size: 0.8rem; }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+
+section { padding: 0 0 72px; }
+.page-head { padding: 56px 0 20px; }
+.eyebrow { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.72rem; color: var(--plum); font-weight: 500; margin: 0 0 14px; }
+.page-head h1 { font-family: var(--display); font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 14px; letter-spacing: -0.01em; }
+.page-head p { max-width: 56ch; color: rgba(43,24,48,0.68); font-size: 1.02rem; margin: 0; }
+
+.picker-group { margin-bottom: 30px; }
+.picker-group h3 { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: rgba(43,24,48,0.6); margin: 0 0 12px; font-weight: 500; }
+.chip-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid rgba(43,24,48,0.16); padding: 10px 18px 10px 12px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); user-select: none; }
+.chip .dot { width: 13px; height: 13px; border-radius: 50%; box-shadow: inset 0 -3px 5px rgba(0,0,0,0.15); flex: 0 0 auto; }
+.chip.active { border-color: var(--ink); background: var(--cream-dim); transform: translateY(-1px); }
+.chip:hover { border-color: var(--ink); }
+
+.generate-row { display: flex; align-items: center; gap: 16px; margin: 10px 0 40px; flex-wrap: wrap; }
+.hint { font-size: 0.85rem; color: rgba(43,24,48,0.55); }
+
+.results-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; flex-wrap: wrap; gap: 10px; }
+.results-head h2 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin: 0; }
+.results-note { font-size: 0.85rem; color: rgba(43,24,48,0.55); }
+
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .results-grid { grid-template-columns: 1fr; } }
+
+.result-card { background: #fff; border: var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.result-media { position: relative; aspect-ratio: 4/5; background: var(--cream-dim); }
+.result-media img { width: 100%; height: 100%; object-fit: cover; }
+.result-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 18px; font-family: var(--mono); font-size: 0.72rem; color: rgba(43,24,48,0.55); line-height: 1.6; }
+.match-badge { position: absolute; top: 10px; left: 10px; background: var(--ink); color: var(--cream); font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 9px; border-radius: 999px; }
+.heart-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; transition: transform .2s var(--ease); }
+.heart-btn:hover { transform: scale(1.1); }
+.heart-btn.active { background: var(--rose); }
+
+.result-body { padding: 16px; }
+.result-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.result-tags span { font-family: var(--mono); font-size: 0.68rem; background: var(--cream-dim); padding: 3px 8px; border-radius: 999px; color: var(--plum-dark); }
+.result-actions { display: flex; gap: 8px; }
+.result-actions .btn { flex: 1; justify-content: center; }
+
+.empty-state { color: rgba(43,24,48,0.4); font-size: 0.9rem; padding: 60px 0; text-align: center; }
+
+.dev-note { background: var(--ink); color: rgba(250,243,236,0.85); border-radius: var(--radius); padding: 22px 26px; font-size: 0.86rem; line-height: 1.7; margin-top: 46px; }
+.dev-note strong { color: var(--cream); font-family: var(--display); font-weight: 600; }
+.dev-note code { font-family: var(--mono); background: rgba(250,243,236,0.12); padding: 1px 6px; border-radius: 4px; font-size: 0.82em; }
+.dev-note ol { margin: 10px 0 0; padding-left: 20px; }
+.dev-note li { margin-bottom: 6px; }
+
+footer { background: var(--ink); color: rgba(250,243,236,0.82); padding: 56px 0 30px; margin-top: 40px; }
+footer .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-bottom: 40px; }
+@media (max-width: 860px) { footer .grid-3 { grid-template-columns: 1fr; } }
+footer h4 { font-family: var(--display); font-weight: 600; color: var(--cream); margin: 0 0 14px; font-size: 1rem; }
+footer p { margin: 0 0 8px; font-size: 0.9rem; line-height: 1.7; }
+footer a { text-decoration: none; color: rgba(250,243,236,0.82); }
+footer a:hover { color: var(--gold); }
+.foot-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(250,243,236,0.14); font-size: 0.8rem; color: rgba(250,243,236,0.5); flex-wrap: wrap; gap: 10px; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span> Studio Vernis</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="design.html" aria-current="page">Design</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="booking.html" class="nav-cta">Book a slot</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Design assistant</p>
+    <h1>Not sure what to book? Describe the vibe.</h1>
+    <p>Tap a few chips and we'll search our own look-book for the closest matches — real photos, not an AI sketch.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+
+    <div class="picker-group" data-group="occasion">
+      <h3>What are you looking for?</h3>
+      <div class="chip-group"></div>
+    </div>
+
+    <div class="picker-group" data-group="style">
+      <h3>Style</h3>
+      <div class="chip-group"></div>
+    </div>
+
+    <div class="picker-group" data-group="length">
+      <h3>Length</h3>
+      <div class="chip-group"></div>
+    </div>
+
+    <div class="picker-group" data-group="shape">
+      <h3>Shape</h3>
+      <div class="chip-group"></div>
+    </div>
+
+    <div class="picker-group" data-group="color">
+      <h3>Color</h3>
+      <div class="chip-group"></div>
+    </div>
+
+    <div class="generate-row">
+      <button class="btn btn-primary" id="search-btn" disabled>Find matching designs</button>
+      <span class="hint" id="search-hint">Pick one option in each row to continue.</span>
+    </div>
+
+    <div id="results-section" style="display:none">
+      <div class="results-head">
+        <h2>Designs for you</h2>
+        <span class="results-note" id="results-note"></span>
+      </div>
+      <div class="results-grid" id="results-grid"></div>
+    </div>
+
+    <div class="dev-note">
+      <strong>How this works:</strong> this is <em>search, not generation</em> — 20 real photos are tagged by occasion / style / length / shape / color, and your chip choices are scored against every photo's tags to rank the closest matches. No image model, no API cost.
+      <ol>
+        <li>The catalog lives in <code>data/nail-designs.json</code> (id, filename, and the 5 tags per photo) with the actual photos in <code>images/nails/</code> — see <code>data/SOURCING.md</code> for a ready-made Pexels search list for each of the 20 slots.</li>
+        <li>Right now the matching runs entirely in this page's JavaScript (<code>scoreDesign()</code> below) — nothing is sent to a server.</li>
+        <li>When your Express backend exists, move <code>nail-designs.json</code> into a MongoDB <code>designs</code> collection and add <code>GET /api/designs/search?occasion=&amp;style=&amp;length=&amp;shape=&amp;color=</code>; since the catalog is tiny, the simplest version just fetches all documents and reuses this exact scoring function server-side.</li>
+        <li>Version 2 later: let people type a sentence ("something luxurious for a party, pink, medium length"), send it to a cheap text model to extract the same five tags, then run it through this same matcher — no image API needed even then.</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="grid-3">
+      <div>
+        <h4>Studio Vernis</h4>
+        <p>12 Lake Terrace Road<br>Kolkata, West Bengal</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Tue – Sun, 10:00 – 19:00<br>Closed Mondays</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:+910000000000">+91 00000 00000</a><br><a href="mailto:hello@studiovernis.example">hello@studiovernis.example</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Studio Vernis</span>
+      <span>Built as a learning project</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   Design Assistant — tag-matching search over a small photo catalog.
+   No image generation, no paid API. See data/nail-designs.json for
+   the source-of-truth catalog (this array mirrors it so the page
+   works standalone). Swap DESIGNS for a fetch('/api/designs') call
+   once a backend exists, and move scoreDesign()/findMatches() to
+   run server-side against MongoDB — the logic doesn't need to change.
+   ============================================================ */
+
+const DESIGNS = [
+  { id: 1,  file: 'nail-01.jpg', occasion: 'Party',    style: 'Luxury',  length: 'Medium', shape: 'Almond',   color: 'Pink'  },
+  { id: 2,  file: 'nail-02.jpg', occasion: 'Party',    style: 'Bold',    length: 'Short',  shape: 'Square',   color: 'Red'   },
+  { id: 3,  file: 'nail-03.jpg', occasion: 'Wedding',  style: 'Elegant', length: 'Long',   shape: 'Coffin',   color: 'White' },
+  { id: 4,  file: 'nail-04.jpg', occasion: 'Wedding',  style: 'Simple',  length: 'Medium', shape: 'Almond',   color: 'Nude'  },
+  { id: 5,  file: 'nail-05.jpg', occasion: 'Casual',   style: 'Simple',  length: 'Short',  shape: 'Square',   color: 'Nude'  },
+  { id: 6,  file: 'nail-06.jpg', occasion: 'Casual',   style: 'Cute',    length: 'Medium', shape: 'Almond',   color: 'Pink'  },
+  { id: 7,  file: 'nail-07.jpg', occasion: 'Office',   style: 'Simple',  length: 'Short',  shape: 'Square',   color: 'Nude'  },
+  { id: 8,  file: 'nail-08.jpg', occasion: 'Office',   style: 'Elegant', length: 'Medium', shape: 'Almond',   color: 'Black' },
+  { id: 9,  file: 'nail-09.jpg', occasion: 'Vacation', style: 'Bold',    length: 'Medium', shape: 'Stiletto', color: 'Red'   },
+  { id: 10, file: 'nail-10.jpg', occasion: 'Vacation', style: 'Cute',    length: 'Short',  shape: 'Square',   color: 'White' },
+  { id: 11, file: 'nail-11.jpg', occasion: 'Party',    style: 'Elegant', length: 'Long',   shape: 'Coffin',   color: 'Black' },
+  { id: 12, file: 'nail-12.jpg', occasion: 'Party',    style: 'Cute',    length: 'Medium', shape: 'Almond',   color: 'White' },
+  { id: 13, file: 'nail-13.jpg', occasion: 'Wedding',  style: 'Luxury',  length: 'Long',   shape: 'Stiletto', color: 'White' },
+  { id: 14, file: 'nail-14.jpg', occasion: 'Wedding',  style: 'Bold',    length: 'Medium', shape: 'Coffin',   color: 'Pink'  },
+  { id: 15, file: 'nail-15.jpg', occasion: 'Casual',   style: 'Elegant', length: 'Medium', shape: 'Almond',   color: 'Nude'  },
+  { id: 16, file: 'nail-16.jpg', occasion: 'Casual',   style: 'Luxury',  length: 'Long',   shape: 'Coffin',   color: 'Red'   },
+  { id: 17, file: 'nail-17.jpg', occasion: 'Office',   style: 'Cute',    length: 'Short',  shape: 'Almond',   color: 'Nude'  },
+  { id: 18, file: 'nail-18.jpg', occasion: 'Office',   style: 'Bold',    length: 'Medium', shape: 'Square',   color: 'Black' },
+  { id: 19, file: 'nail-19.jpg', occasion: 'Vacation', style: 'Simple',  length: 'Short',  shape: 'Square',   color: 'Pink'  },
+  { id: 20, file: 'nail-20.jpg', occasion: 'Vacation', style: 'Luxury',  length: 'Long',   shape: 'Stiletto', color: 'Any'   },
+];
+
+const GROUPS = {
+  occasion: ['Party', 'Wedding', 'Casual', 'Office', 'Vacation'],
+  style:    ['Simple', 'Elegant', 'Luxury', 'Cute', 'Bold'],
+  length:   ['Short', 'Medium', 'Long'],
+  shape:    ['Almond', 'Square', 'Coffin', 'Stiletto'],
+  color:    ['Nude', 'Pink', 'Red', 'White', 'Black', 'Any'],
+};
+
+const COLOR_HEX = {
+  Nude: '#E3C9B0', Pink: '#E8B4B8', Red: '#B0413E',
+  White: '#F5F0EA', Black: '#2B1830',
+  Any: 'conic-gradient(from 0deg,#7A2E4D,#C9A15A,#E8B4B8,#7C8F6E,#B0413E)',
+};
+
+// Weighted scoring: occasion and style define the overall look the most,
+// color is a strong visual signal, shape/length matter but are easiest
+// for an artist to adjust on the day — so they count for less.
+const WEIGHTS = { occasion: 3, style: 3, color: 2, shape: 1, length: 1 };
+
+const prefs = {};
+const saved = new Set();
+
+document.addEventListener('DOMContentLoaded', () => {
+  Object.entries(GROUPS).forEach(([group, options]) => {
+    const container = document.querySelector(`.picker-group[data-group="${group}"] .chip-group`);
+    options.forEach(opt => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip';
+      chip.dataset.group = group;
+      chip.dataset.value = opt;
+      chip.innerHTML = (group === 'color')
+        ? `<span class="dot" style="background:${COLOR_HEX[opt]}"></span>${opt}`
+        : opt;
+      chip.addEventListener('click', () => {
+        container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        prefs[group] = opt;
+        refreshSearchState();
+      });
+      container.appendChild(chip);
+    });
+  });
+
+  document.getElementById('search-btn').addEventListener('click', handleSearch);
+});
+
+function refreshSearchState() {
+  const done = Object.keys(GROUPS).every(g => prefs[g]);
+  document.getElementById('search-btn').disabled = !done;
+  document.getElementById('search-hint').textContent = done
+    ? 'Looks good — find matching designs.'
+    : 'Pick one option in each row to continue.';
+}
+
+function scoreDesign(design, p) {
+  let score = 0;
+  if (design.occasion === p.occasion) score += WEIGHTS.occasion;
+  if (design.style === p.style) score += WEIGHTS.style;
+  if (design.color === p.color || p.color === 'Any' || design.color === 'Any') score += WEIGHTS.color;
+  if (design.shape === p.shape) score += WEIGHTS.shape;
+  if (design.length === p.length) score += WEIGHTS.length;
+  return score;
+}
+
+function findMatches(p, topN = 6) {
+  return DESIGNS
+    .map(d => ({ ...d, score: scoreDesign(d, p) }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topN);
+}
+
+function handleSearch() {
+  const matches = findMatches(prefs);
+  const section = document.getElementById('results-section');
+  const grid = document.getElementById('results-grid');
+  const note = document.getElementById('results-note');
+  const maxScore = WEIGHTS.occasion + WEIGHTS.style + WEIGHTS.color + WEIGHTS.shape + WEIGHTS.length;
+  const bestScore = matches[0]?.score || 0;
+
+  note.textContent = bestScore === maxScore
+    ? 'Exact matches first, closest looks after.'
+    : 'No exact match yet with only 20 photos — here are the closest looks.';
+
+  grid.innerHTML = matches.map(design => {
+    const isSaved = saved.has(design.id);
+    return `
+      <div class="result-card">
+        <div class="result-media">
+          <img src="images/nails/${design.file}" alt="${design.occasion} ${design.style} ${design.color} nails"
+               onerror="this.replaceWith(placeholderNode('${design.occasion}','${design.style}','${design.color}'))">
+          <span class="match-badge">${design.score}/${maxScore} match</span>
+          <button class="heart-btn ${isSaved ? 'active' : ''}" data-id="${design.id}" aria-label="Save this design">${isSaved ? '♥' : '♡'}</button>
+        </div>
+        <div class="result-body">
+          <div class="result-tags">
+            <span>${design.occasion}</span><span>${design.style}</span><span>${design.length}</span><span>${design.shape}</span><span>${design.color}</span>
+          </div>
+          <div class="result-actions">
+            <a class="btn btn-ghost btn-sm" href="images/nails/${design.file}" download>Download</a>
+            <a class="btn btn-primary btn-sm" href="booking.html?note=${encodeURIComponent(design.occasion + ' \u00b7 ' + design.style + ' \u00b7 ' + design.length + ' \u00b7 ' + design.shape + ' \u00b7 ' + design.color)}">Book this look</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.heart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = Number(btn.dataset.id);
+      if (saved.has(id)) { saved.delete(id); btn.classList.remove('active'); btn.textContent = '♡'; }
+      else { saved.add(id); btn.classList.add('active'); btn.textContent = '♥'; }
+    });
+  });
+
+  section.style.display = '';
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Shown instead of a broken image icon until the real Pexels photos are
+// dropped into images/nails/ (see data/SOURCING.md).
+function placeholderNode(occasion, style, color) {
+  const div = document.createElement('div');
+  div.className = 'result-placeholder';
+  div.style.background = COLOR_HEX[color] && !COLOR_HEX[color].startsWith('conic') ? COLOR_HEX[color] + '33' : '#F1E7DC';
+  div.textContent = `Add photo:\n${occasion} · ${style} · ${color}`;
+  div.style.whiteSpace = 'pre-line';
+  return div;
+}
+</script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Design Assistant | Lustre Nail Studio</title>
+
+    <!-- GOOGLE FONTS -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- MAIN CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --ai-cream: #faf7f3;
+            --ai-white: #ffffff;
+            --ai-ink: #2c2427;
+            --ai-muted: #81777a;
+            --ai-accent: #8c4b65;
+            --ai-accent-dark: #69384c;
+            --ai-rose: #dca0ad;
+            --ai-blush: #f1dfe3;
+            --ai-gold: #b89055;
+            --ai-line: #e7ddd8;
+            --ai-soft: #f5efeb;
+
+            --ai-shadow:
+                0 25px 70px rgba(55, 37, 42, 0.10);
+
+            --ai-shadow-small:
+                0 12px 35px rgba(55, 37, 42, 0.07);
+        }
+
+
+        /* =====================================================
+           BODY
+        ====================================================== */
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(220,160,173,.13),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(184,144,85,.09),
+                    transparent 25%
+                ),
+                var(--ai-cream);
+
+            color: var(--ai-ink);
+        }
+
+
+        /* =====================================================
+           AI HERO
+        ====================================================== */
+
+        .ai-hero {
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                95px 7%
+                55px;
+
+            text-align: center;
+
+            position: relative;
+        }
+
+
+        .ai-eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                8px 14px;
+
+            border:
+                1px solid var(--ai-line);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.72);
+
+            color: var(--ai-accent);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: .15em;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(50,30,35,.04);
+        }
+
+
+        .ai-status-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #7aa66b;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(122,166,107,.13);
+        }
+
+
+        .ai-hero h1 {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    45px,
+                    6vw,
+                    76px
+                );
+
+            line-height: 1.04;
+
+            font-weight: 500;
+
+            letter-spacing: -.045em;
+        }
+
+
+        .ai-hero h1 em {
+
+            color: var(--ai-accent);
+
+            font-style: italic;
+        }
+
+
+        .ai-hero p {
+
+            max-width: 650px;
+
+            margin:
+                22px auto 0;
+
+            color: var(--ai-muted);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           AI ASSISTANT WRAPPER
+        ====================================================== */
+
+        .assistant-wrapper {
+
+            max-width: 1120px;
+
+            margin:
+                0 auto 90px;
+
+            padding:
+                0 7%;
+        }
+
+
+        /* =====================================================
+           ASSISTANT WINDOW
+        ====================================================== */
+
+        .assistant-window {
+
+            background:
+                rgba(255,255,255,.86);
+
+            border:
+                1px solid var(--ai-line);
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            box-shadow:
+                var(--ai-shadow);
+
+            backdrop-filter:
+                blur(14px);
+        }
+
+
+        /* =====================================================
+           ASSISTANT HEADER
+        ====================================================== */
+
+        .assistant-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                20px 25px;
+
+            border-bottom:
+                1px solid var(--ai-line);
+
+            background:
+                rgba(255,255,255,.82);
+        }
+
+
+        .assistant-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+        }
+
+
+        .assistant-avatar {
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 50%;
+
+            display: grid;
+
+            place-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--ai-accent),
+                    var(--ai-rose)
+                );
+
+            color: white;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 18px;
+
+            box-shadow:
+                0 8px 22px
+                rgba(140,75,101,.25);
+        }
+
+
+        .assistant-name {
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .assistant-online {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            color: var(--ai-muted);
+
+            font-size: 10px;
+
+            margin-top: 2px;
+        }
+
+
+        .online-dot {
+
+            width: 5px;
+
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #79a56b;
+        }
+
+
+        .assistant-label {
+
+            padding:
+                7px 11px;
+
+            border-radius: 6px;
+
+            background:
+                var(--ai-soft);
+
+            color:
+                var(--ai-accent);
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           CHAT AREA
+        ====================================================== */
+
+        .assistant-chat {
+
+            padding:
+                30px 30px 5px;
+        }
+
+
+        .ai-message {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            margin-bottom: 25px;
+
+            animation:
+                messageIn .45s ease;
+        }
+
+
+        @keyframes messageIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .ai-mini-avatar {
+
+            width: 29px;
+
+            height: 29px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                var(--ai-blush);
+
+            color:
+                var(--ai-accent);
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .ai-bubble {
+
+            max-width: 620px;
+
+            padding:
+                15px 18px;
+
+            background:
+                var(--ai-soft);
+
+            border:
+                1px solid var(--ai-line);
+
+            border-radius:
+                4px 16px 16px 16px;
+
+            color:
+                var(--ai-ink);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        .ai-bubble strong {
+
+            color:
+                var(--ai-accent);
+        }
+
+
+        /* =====================================================
+           CONVERSATION PROGRESS
+        ====================================================== */
+
+        .conversation-progress {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin:
+                5px 30px 22px;
+
+            height: 4px;
+        }
+
+
+        .progress-step {
+
+            height: 4px;
+
+            flex: 1;
+
+            border-radius: 10px;
+
+            background:
+                var(--ai-line);
+
+            transition:
+                background .35s ease,
+                transform .35s ease;
+        }
+
+
+        .progress-step.active {
+
+            background:
+                var(--ai-accent);
+
+            transform:
+                scaleY(1.5);
+        }
+
+
+        .progress-step.completed {
+
+            background:
+                var(--ai-rose);
+        }
+
+
+        /* =====================================================
+           PREFERENCES
+        ====================================================== */
+
+        .preference-area {
+
+            padding:
+                15px 30px 35px;
+        }
+
+
+        .preference-intro {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+
+        .preference-intro h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 27px;
+
+            font-weight: 500;
+
+            margin: 0;
+        }
+
+
+        .preference-count {
+
+            font-size: 10px;
+
+            color:
+                var(--ai-muted);
+
+            font-family:
+                monospace;
+        }
+
+
+        /* =====================================================
+           QUESTION CARDS
+        ====================================================== */
+
+        .preference-grid {
+
+            display: block;
+        }
+
+
+        .preference-card {
+
+            padding:
+                22px;
+
+            border:
+                1px solid var(--ai-line);
+
+            border-radius: 14px;
+
+            background:
+                var(--ai-white);
+
+            transition:
+                .35s ease;
+
+            display: none;
+
+            animation:
+                questionIn .45s ease;
+        }
+
+
+        .preference-card.active-question {
+
+            display: block;
+        }
+
+
+        @keyframes questionIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(18px)
+                    scale(.985);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .preference-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .preference-number {
+
+            width: 30px;
+
+            height: 30px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                var(--ai-soft);
+
+            color:
+                var(--ai-accent);
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+
+        .preference-heading strong {
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .question-subtitle {
+
+            color:
+                var(--ai-muted);
+
+            font-size: 11px;
+
+            margin:
+                -7px 0 15px 39px;
+        }
+
+
+        .preference-options {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .option-btn {
+
+            border:
+                1px solid var(--ai-line);
+
+            background:
+                white;
+
+            color:
+                var(--ai-muted);
+
+            padding:
+                9px 14px;
+
+            border-radius:
+                999px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                11px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .option-btn:hover {
+
+            border-color:
+                var(--ai-accent);
+
+            color:
+                var(--ai-accent);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .option-btn.selected {
+
+            background:
+                var(--ai-accent);
+
+            border-color:
+                var(--ai-accent);
+
+            color:
+                white;
+
+            box-shadow:
+                0 7px 17px
+                rgba(140,75,101,.18);
+        }
+
+
+        /* =====================================================
+           COMPLETED QUESTION
+        ====================================================== */
+
+        .preference-card.completed-question {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 14px 17px;
+
+            margin-bottom: 10px;
+
+            background:
+                var(--ai-soft);
+
+            border-color:
+                var(--ai-line);
+
+            animation:
+                completedIn .35s ease;
+        }
+
+
+        @keyframes completedIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .completed-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .completed-check {
+
+            width: 25px;
+
+            height: 25px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                var(--ai-accent);
+
+            color:
+                white;
+
+            font-size: 11px;
+        }
+
+
+        .completed-label {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+        }
+
+
+        .completed-label small {
+
+            color:
+                var(--ai-muted);
+
+            font-size: 9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .08em;
+        }
+
+
+        .completed-label strong {
+
+            font-size:
+                12px;
+
+            color:
+                var(--ai-ink);
+        }
+
+
+        .completed-edit {
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                var(--ai-accent);
+
+            font-size:
+                10px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           AI SEARCH AREA
+        ====================================================== */
+
+        .ai-search-area {
+
+            margin-top:
+                25px;
+
+            padding-top:
+                25px;
+
+            border-top:
+                1px solid var(--ai-line);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+        }
+
+
+        .ai-thinking-note {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color:
+                var(--ai-muted);
+
+            font-size: 11px;
+        }
+
+
+        .thinking-dots {
+
+            display: flex;
+
+            gap: 3px;
+        }
+
+
+        .thinking-dots span {
+
+            width: 4px;
+
+            height: 4px;
+
+            border-radius: 50%;
+
+            background:
+                var(--ai-rose);
+
+            animation:
+                thinking 1.2s infinite;
+        }
+
+
+        .thinking-dots span:nth-child(2) {
+
+            animation-delay:
+                .2s;
+        }
+
+
+        .thinking-dots span:nth-child(3) {
+
+            animation-delay:
+                .4s;
+        }
+
+
+        @keyframes thinking {
+
+            0%, 60%, 100% {
+                opacity: .3;
+                transform: translateY(0);
+            }
+
+            30% {
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+        }
+
+
+        #search-btn {
+
+            border:
+                none;
+
+            background:
+                var(--ai-accent);
+
+            color:
+                white;
+
+            padding:
+                13px 23px;
+
+            border-radius:
+                8px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                .25s ease;
+
+            box-shadow:
+                0 9px 25px
+                rgba(140,75,101,.22);
+
+            display: none;
+        }
+
+
+        #search-btn.show-search {
+
+            display: block;
+
+            animation:
+                searchButtonIn .45s ease;
+        }
+
+
+        @keyframes searchButtonIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(10px)
+                    scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        #search-btn:hover:not(:disabled) {
+
+            background:
+                var(--ai-accent-dark);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        #search-btn:disabled {
+
+            opacity:
+                .4;
+
+            cursor:
+                not-allowed;
+
+            box-shadow:
+                none;
+        }
+
+
+        /* =====================================================
+           RESULTS
+        ====================================================== */
+
+        #results-section {
+
+            max-width:
+                1180px;
+
+            margin:
+                0 auto 100px;
+
+            padding:
+                0 7%;
+
+            display:
+                none;
+        }
+
+
+        .results-top {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+
+            margin-bottom:
+                35px;
+        }
+
+
+        .results-eyebrow {
+
+            color:
+                var(--ai-gold);
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .15em;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .results-top h2 {
+
+            margin:
+                0;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    57px
+                );
+
+            line-height:
+                1.05;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                -.035em;
+        }
+
+
+        .results-top h2 em {
+
+            color:
+                var(--ai-accent);
+
+            font-style:
+                italic;
+        }
+
+
+        #results-note {
+
+            max-width:
+                300px;
+
+            color:
+                var(--ai-muted);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+            text-align:
+                right;
+        }
+
+
+        /* =====================================================
+           RESULT GRID
+        ====================================================== */
+
+        .results-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                18px;
+        }
+
+
+        /* =====================================================
+           DESIGN CARD
+        ====================================================== */
+
+        .design-card {
+
+            background:
+                var(--ai-white);
+
+            border:
+                1px solid var(--ai-line);
+
+            overflow:
+                hidden;
+
+            position:
+                relative;
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+        }
+
+
+        .design-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                var(--ai-rose);
+
+            box-shadow:
+                0 25px 55px
+                rgba(45,30,35,.11);
+        }
+
+
+        .image-wrapper {
+
+            height:
+                350px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                var(--ai-soft);
+        }
+
+
+        .image-wrapper img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+
+            transition:
+                transform .5s ease;
+        }
+
+
+        .design-card:hover
+        .image-wrapper img {
+
+            transform:
+                scale(1.045);
+        }
+
+
+        .score-badge {
+
+            position:
+                absolute;
+
+            top:
+                13px;
+
+            left:
+                13px;
+
+            padding:
+                7px 10px;
+
+            border-radius:
+                5px;
+
+            background:
+                rgba(255,255,255,.94);
+
+            color:
+                var(--ai-accent);
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .05em;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0,0,0,.08);
+        }
+
+
+        .heart-btn {
+
+            position:
+                absolute;
+
+            top:
+                11px;
+
+            right:
+                11px;
+
+            width:
+                37px;
+
+            height:
+                37px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(255,255,255,.94);
+
+            color:
+                var(--ai-accent);
+
+            cursor:
+                pointer;
+
+            font-size:
+                18px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .heart-btn:hover {
+
+            transform:
+                scale(1.1);
+        }
+
+
+        .design-content {
+
+            padding:
+                20px;
+        }
+
+
+        .design-category {
+
+            color:
+                var(--ai-gold);
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .14em;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .design-title {
+
+            margin:
+                0 0 14px;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                22px;
+
+            font-weight:
+                500;
+
+            line-height:
+                1.25;
+        }
+
+
+        .tags {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                5px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .tag {
+
+            padding:
+                5px 8px;
+
+            border:
+                1px solid var(--ai-line);
+
+            background:
+                var(--ai-soft);
+
+            color:
+                var(--ai-muted);
+
+            font-size:
+                9px;
+
+            border-radius:
+                4px;
+        }
+
+
+        .design-actions {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                8px;
+        }
+
+
+        .design-actions a {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-height:
+                38px;
+
+            border:
+                1px solid var(--ai-accent);
+
+            color:
+                var(--ai-accent);
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            border-radius:
+                5px;
+
+            transition:
+                .2s ease;
+
+            text-decoration:
+                none;
+        }
+
+
+        .design-actions a:first-child {
+
+            background:
+                var(--ai-accent);
+
+            color:
+                white;
+        }
+
+
+        .design-actions a:hover {
+
+            background:
+                var(--ai-accent-dark);
+
+            border-color:
+                var(--ai-accent-dark);
+
+            color:
+                white;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           PLACEHOLDER
+        ====================================================== */
+
+        .placeholder {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                30px;
+
+            color:
+                var(--ai-muted);
+        }
+
+
+        .placeholder-icon {
+
+            font-size:
+                40px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .placeholder strong {
+
+            color:
+                var(--ai-ink);
+
+            font-size:
+                13px;
+
+            margin-bottom:
+                5px;
+        }
+
+
+        .placeholder small {
+
+            font-size:
+                10px;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ====================================================== */
+
+        .empty-state {
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                70px 30px;
+
+            text-align:
+                center;
+
+            background:
+                var(--ai-white);
+
+            border:
+                1px solid var(--ai-line);
+        }
+
+
+        .empty-state h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                30px;
+
+            font-weight:
+                500;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .empty-state p {
+
+            color:
+                var(--ai-muted);
+
+            font-size:
+                12px;
+        }
+
+
+        /* =====================================================
+           AI NOTE
+        ====================================================== */
+
+        .ai-info {
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto 80px;
+
+            padding:
+                0 7%;
+        }
+
+
+        .ai-info-box {
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                15px;
+
+            padding:
+                20px;
+
+            background:
+                var(--ai-soft);
+
+            border:
+                1px solid var(--ai-line);
+
+            border-radius:
+                12px;
+        }
+
+
+        .ai-info-icon {
+
+            width:
+                32px;
+
+            height:
+                32px;
+
+            flex-shrink:
+                0;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--ai-blush);
+
+            color:
+                var(--ai-accent);
+
+            font-size:
+                13px;
+        }
+
+
+        .ai-info-title {
+
+            margin-bottom:
+                5px;
+
+            color:
+                var(--ai-accent);
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .12em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .ai-info p {
+
+            color:
+                var(--ai-muted);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+            margin:
+                0;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 950px) {
+
+            .results-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .results-top {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+            #results-note {
+
+                text-align:
+                    left;
+
+                max-width:
+                    none;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .ai-hero {
+
+                padding:
+                    70px 6% 40px;
+            }
+
+
+            .ai-hero h1 {
+
+                font-size:
+                    45px;
+            }
+
+
+            .assistant-wrapper {
+
+                padding:
+                    0 4%;
+
+                margin-bottom:
+                    65px;
+            }
+
+
+            .assistant-header {
+
+                padding:
+                    17px;
+            }
+
+
+            .assistant-label {
+
+                display:
+                    none;
+            }
+
+
+            .assistant-chat {
+
+                padding:
+                    23px 18px 5px;
+            }
+
+
+            .conversation-progress {
+
+                margin:
+                    5px 18px 20px;
+            }
+
+
+            .preference-area {
+
+                padding:
+                    15px 18px 25px;
+            }
+
+
+            .preference-card {
+
+                padding:
+                    18px;
+            }
+
+
+            .ai-search-area {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+            }
+
+
+            #search-btn {
+
+                width:
+                    100%;
+
+                text-align:
+                    center;
+            }
+
+
+            #search-btn.show-search {
+
+                display:
+                    block;
+            }
+
+
+            #results-section {
+
+                padding:
+                    0 4%;
+            }
+
+
+            .results-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .image-wrapper {
+
+                height:
+                    390px;
+            }
+
+
+            .ai-info {
+
+                padding:
+                    0 5%;
+
+                margin-bottom:
+                    60px;
+            }
+
+
+            .question-subtitle {
+
+                margin-left:
+                    39px;
+
+                line-height:
+                    1.5;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .ai-hero h1 {
+
+                font-size:
+                    39px;
+            }
+
+
+            .preference-intro h2 {
+
+                font-size:
+                    23px;
+            }
+
+
+            .option-btn {
+
+                font-size:
+                    10px;
+
+                padding:
+                    8px 11px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                L
+            </span>
+
+            <span>
+                LUSTRE
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav"
+            id="nav"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a
+                href="design.html"
+                class="active"
+            >
+                Design
+            </a>
+
+            <a href="booking.html">
+                Book
+            </a>
+
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                onclick="toggleTheme()"
+            >
+                ☾
+            </button>
+
+
+            <a
+                href="booking.html"
+                class="nav-cta"
+            >
+                Book appointment ↗
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         AI HERO
+    ====================================================== -->
+
+    <section class="ai-hero">
+
+        <div class="ai-eyebrow">
+
+            <span class="ai-status-dot"></span>
+
+            Lustre AI Design Assistant
+
+        </div>
+
+
+        <h1>
+
+            Your next nail look,
+
+            <br>
+
+            <em>found for you.</em>
+
+        </h1>
+
+
+        <p>
+
+            Tell me your occasion, color, shape and style.
+            I'll search our nail collection and show you
+            the designs that match your vibe best.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         AI ASSISTANT
+    ====================================================== -->
+
+    <section class="assistant-wrapper">
+
+        <div class="assistant-window">
+
+
+            <!-- ASSISTANT HEADER -->
+
+            <div class="assistant-header">
+
+                <div class="assistant-profile">
+
+                    <div class="assistant-avatar">
+                        L
+                    </div>
+
+                    <div>
+
+                        <div class="assistant-name">
+                            Lustre Design Assistant
+                        </div>
+
+                        <div class="assistant-online">
+
+                            <span class="online-dot"></span>
+
+                            Ready to help you choose
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="assistant-label">
+                    AI Powered Finder
+                </div>
+
+            </div>
+
+
+            <!-- CHAT -->
+
+            <div
+                class="assistant-chat"
+                id="assistant-chat"
+            >
+
+                <div class="ai-message">
+
+                    <div class="ai-mini-avatar">
+                        L
+                    </div>
+
+                    <div class="ai-bubble">
+
+                        Hi! ✨ I'm your Lustre nail stylist.
+                        I'll ask you a few quick questions
+                        and find the designs that feel most
+                        like <strong>you</strong>.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div
+                class="conversation-progress"
+                id="conversation-progress"
+            >
+
+                <span class="progress-step active"></span>
+                <span class="progress-step"></span>
+                <span class="progress-step"></span>
+                <span class="progress-step"></span>
+                <span class="progress-step"></span>
+
+            </div>
+
+
+            <!-- PREFERENCES -->
+
+            <div class="preference-area">
+
+                <div class="preference-intro">
+
+                    <h2>
+                        Let's find your vibe
+                    </h2>
+
+                    <span
+                        class="preference-count"
+                        id="search-hint"
+                    >
+                        1 / 5
+                    </span>
+
+                </div>
+
+
+                <div class="preference-grid">
+
+
+                    <!-- OCCASION -->
+
+                    <div
+                        class="preference-card active-question"
+                        data-question="0"
+                        id="question-occasion"
+                    >
+
+                        <div class="preference-heading">
+
+                            <div class="preference-number">
+                                01
+                            </div>
+
+                            <strong>
+                                What's the occasion?
+                            </strong>
+
+                        </div>
+
+                        <p class="question-subtitle">
+                            Where are you planning to show off your nails?
+                        </p>
+
+                        <div
+                            class="preference-options"
+                            id="occasion-options"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- STYLE -->
+
+                    <div
+                        class="preference-card"
+                        data-question="1"
+                        id="question-style"
+                    >
+
+                        <div class="preference-heading">
+
+                            <div class="preference-number">
+                                02
+                            </div>
+
+                            <strong>
+                                What's your style?
+                            </strong>
+
+                        </div>
+
+                        <p class="question-subtitle">
+                            Pick the vibe that feels most like you.
+                        </p>
+
+                        <div
+                            class="preference-options"
+                            id="style-options"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- LENGTH -->
+
+                    <div
+                        class="preference-card"
+                        data-question="2"
+                        id="question-length"
+                    >
+
+                        <div class="preference-heading">
+
+                            <div class="preference-number">
+                                03
+                            </div>
+
+                            <strong>
+                                What nail length do you prefer?
+                            </strong>
+
+                        </div>
+
+                        <p class="question-subtitle">
+                            Keep it natural or make a statement.
+                        </p>
+
+                        <div
+                            class="preference-options"
+                            id="length-options"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- SHAPE -->
+
+                    <div
+                        class="preference-card"
+                        data-question="3"
+                        id="question-shape"
+                    >
+
+                        <div class="preference-heading">
+
+                            <div class="preference-number">
+                                04
+                            </div>
+
+                            <strong>
+                                Which nail shape do you love?
+                            </strong>
+
+                        </div>
+
+                        <p class="question-subtitle">
+                            Choose the silhouette you'd like to wear.
+                        </p>
+
+                        <div
+                            class="preference-options"
+                            id="shape-options"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- COLOR -->
+
+                    <div
+                        class="preference-card"
+                        data-question="4"
+                        id="question-color"
+                    >
+
+                        <div class="preference-heading">
+
+                            <div class="preference-number">
+                                05
+                            </div>
+
+                            <strong>
+                                What color are you feeling?
+                            </strong>
+
+                        </div>
+
+                        <p class="question-subtitle">
+                            Last one! Pick the color you're drawn to.
+                        </p>
+
+                        <div
+                            class="preference-options"
+                            id="color-options"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="ai-search-area">
+
+                    <div
+                        class="ai-thinking-note"
+                        id="thinking-note"
+                    >
+
+                        <div class="thinking-dots">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                        <span id="thinking-text">
+                            Let's start with your occasion
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        id="search-btn"
+                    >
+                        ✦ Find my designs
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTS
+    ====================================================== -->
+
+    <section
+        id="results-section"
+    >
+
+        <div class="results-top">
+
+            <div>
+
+                <div class="results-eyebrow">
+                    Lustre AI Selection
+                </div>
+
+                <h2>
+                    Looks picked
+                    <br>
+                    <em>for you.</em>
+                </h2>
+
+            </div>
+
+
+            <p id="results-note"></p>
+
+        </div>
+
+
+        <div
+            class="results-grid"
+            id="results-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AI EXPLANATION
+    ====================================================== -->
+
+    <section class="ai-info">
+
+        <div class="ai-info-box">
+
+            <div class="ai-info-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <div class="ai-info-title">
+                    How Lustre AI chooses
+                </div>
+
+                <p>
+
+                    Your selections are compared with the
+                    designs in our Supabase collection.
+                    Color has the highest priority, followed
+                    by shape and occasion. Style and length
+                    are used as additional matching signals.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer
+        class="footer"
+        id="contact"
+    >
+
+        <div class="footer-top">
+
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="brand"
+                >
+
+                    <span class="brand-mark">
+                        L
+                    </span>
+
+                    <span>
+                        LUSTRE
+                    </span>
+
+                </a>
+
+                <p>
+
+                    Modern nail art & mindful beauty
+                    <br>
+                    in the heart of the city.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Visit
+                </h4>
+
+                <p>
+
+                    24 Rose Avenue
+                    <br>
+                    Kolkata, West Bengal
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Hours
+                </h4>
+
+                <p>
+
+                    Mon–Sat · 10 AM–7 PM
+                    <br>
+                    Sunday · By appointment
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Say hello
+                </h4>
+
+                <p>
+
+                    +91 98765 43210
+                    <br>
+                    hello@lustrestudio.in
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Lustre Nail Studio
+            </span>
+
+            <span>
+                Instagram · Privacy · Terms
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SUPABASE
+        ====================================================== */
+
+        const SUPABASE_URL =
+            "https://zicdkwygzozoxggxameu.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_DR3xJbf7ljIStoDSR3WF6Q_BcnAzBwB";
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =====================================================
+           MATCHING WEIGHTS
+        ====================================================== */
+
+        const WEIGHTS = {
+
+            color: 5,
+
+            shape: 4,
+
+            occasion: 3,
+
+            style: 1,
+
+            length: 1
+
+        };
+
+
+        /* =====================================================
+           OPTIONS
+        ====================================================== */
+
+        const OPTIONS = {
+
+            occasion: [
+                "Party",
+                "Wedding",
+                "Casual",
+                "Office",
+                "Vacation"
+            ],
+
+            style: [
+                "Simple",
+                "Elegant",
+                "Luxury",
+                "Cute",
+                "Bold"
+            ],
+
+            length: [
+                "Short",
+                "Medium",
+                "Long"
+            ],
+
+            shape: [
+                "Almond",
+                "Square",
+                "Coffin",
+                "Stiletto"
+            ],
+
+            color: [
+                "Nude",
+                "Pink",
+                "Red",
+                "White",
+                "Black",
+                "Any"
+            ]
+
+        };
+
+
+        /* =====================================================
+           CONVERSATION
+        ====================================================== */
+
+        const QUESTION_ORDER = [
+            "occasion",
+            "style",
+            "length",
+            "shape",
+            "color"
+        ];
+
+
+        const CONVERSATION_MESSAGES = {
+
+            occasion: {
+                question:
+                    "First things first ✨ What's the occasion? I'll use that to understand the kind of look you're going for.",
+                next:
+                    "Lovely choice! 💅 Now let's talk about your style. Are you feeling more simple, elegant, cute or bold?"
+            },
+
+            style: {
+                question:
+                    "Now let's talk about your style ✨ What kind of vibe feels most like you?",
+                next:
+                    "I can already picture it! 💕 How long would you like your nails to be?"
+            },
+
+            length: {
+                question:
+                    "Almost there! Let's choose the length. Do you prefer something short and practical or longer and more dramatic?",
+                next:
+                    "Perfect! ✨ Now let's choose the shape that will complete your look."
+            },
+
+            shape: {
+                question:
+                    "We're getting close! 💅 Which nail shape catches your eye?",
+                next:
+                    "Beautiful choice! One last thing... 🎨 What color are you feeling?"
+            },
+
+            color: {
+                question:
+                    "And finally, the fun part 🎨 What color are you feeling today?",
+                next:
+                    "That's a beautiful combination! ✨ I have everything I need. Let me find your closest Lustre matches..."
+            }
+
+        };
+
+
+        /* =====================================================
+           USER PREFERENCES
+        ====================================================== */
+
+        const preferences = {
+
+            occasion: null,
+
+            style: null,
+
+            length: null,
+
+            shape: null,
+
+            color: null
+
+        };
+
+
+        /* =====================================================
+           DATA
+        ====================================================== */
+
+        let designs = [];
+
+        let designsLoaded = false;
+
+        let currentQuestionIndex = 0;
+
+
+        /* =====================================================
+           NORMALIZE
+        ====================================================== */
+
+        function normalize(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+            return String(value)
+                .trim()
+                .toLowerCase();
+
+        }
+
+
+        /* =====================================================
+           BUILD PICKERS
+        ====================================================== */
+
+        function buildPickers() {
+
+            Object.keys(OPTIONS).forEach(
+                group => {
+
+                    const container =
+                        document.getElementById(
+                            `${group}-options`
+                        );
+
+                    if (!container) {
+
+                        return;
+
+                    }
+
+                    container.innerHTML = "";
+
+                    OPTIONS[group].forEach(
+                        option => {
+
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
+
+                            button.type =
+                                "button";
+
+                            button.className =
+                                "option-btn";
+
+                            button.textContent =
+                                option;
+
+                            button.dataset.value =
+                                option;
+
+                            button.addEventListener(
+                                "click",
+                                () => {
+
+                                    selectOption(
+                                        group,
+                                        option,
+                                        button
+                                    );
+
+                                }
+                            );
+
+                            container.appendChild(
+                                button
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           AI MESSAGE
+        ====================================================== */
+
+        function showAIMessage(message) {
+
+            const chat =
+                document.getElementById(
+                    "assistant-chat"
+                );
+
+            const oldMessages =
+                chat.querySelectorAll(
+                    ".ai-message"
+                );
+
+            oldMessages.forEach(
+                item => {
+
+                    item.style.opacity = ".72";
+
+                }
+            );
+
+
+            const messageWrapper =
+                document.createElement(
+                    "div"
+                );
+
+            messageWrapper.className =
+                "ai-message";
+
+
+            const avatar =
+                document.createElement(
+                    "div"
+                );
+
+            avatar.className =
+                "ai-mini-avatar";
+
+            avatar.textContent =
+                "L";
+
+
+            const bubble =
+                document.createElement(
+                    "div"
+                );
+
+            bubble.className =
+                "ai-bubble";
+
+            bubble.innerHTML =
+                message;
+
+
+            messageWrapper.appendChild(
+                avatar
+            );
+
+            messageWrapper.appendChild(
+                bubble
+            );
+
+
+            chat.appendChild(
+                messageWrapper
+            );
+
+
+            setTimeout(
+                () => {
+
+                    messageWrapper.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest"
+                    });
+
+                },
+                100
+            );
+
+        }
+
+
+        /* =====================================================
+           UPDATE PROGRESS
+        ====================================================== */
+
+        function updateProgress() {
+
+            const steps =
+                document.querySelectorAll(
+                    ".progress-step"
+                );
+
+
+            steps.forEach(
+                (step, index) => {
+
+                    step.classList.remove(
+                        "active",
+                        "completed"
+                    );
+
+
+                    if (
+                        index <
+                        currentQuestionIndex
+                    ) {
+
+                        step.classList.add(
+                            "completed"
+                        );
+
+                    }
+
+
+                    if (
+                        index ===
+                        currentQuestionIndex
+                    ) {
+
+                        step.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            const hint =
+                document.getElementById(
+                    "search-hint"
+                );
+
+
+            if (
+                currentQuestionIndex < 5
+            ) {
+
+                hint.textContent =
+                    `${currentQuestionIndex + 1} / 5`;
+
+            }
+            else {
+
+                hint.textContent =
+                    "✓ 5 / 5";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SHOW QUESTION
+        ====================================================== */
+
+        function showQuestion(index) {
+
+            const cards =
+                document.querySelectorAll(
+                    ".preference-card"
+                );
+
+
+            cards.forEach(
+                card => {
+
+                    card.classList.remove(
+                        "active-question"
+                    );
+
+                }
+            );
+
+
+            if (
+                index >= QUESTION_ORDER.length
+            ) {
+
+                showFinalState();
+
+                return;
+
+            }
+
+
+            const group =
+                QUESTION_ORDER[index];
+
+
+            const card =
+                document.getElementById(
+                    `question-${group}`
+                );
+
+
+            if (card) {
+
+                card.classList.add(
+                    "active-question"
+                );
+
+            }
+
+
+            currentQuestionIndex =
+                index;
+
+
+            updateProgress();
+
+
+            const thinkingText =
+                document.getElementById(
+                    "thinking-text"
+                );
+
+
+            if (thinkingText) {
+
+                if (index === 0) {
+
+                    thinkingText.textContent =
+                        "Let's start with your occasion";
+
+                }
+                else {
+
+                    thinkingText.textContent =
+                        "Choose what feels right for you";
+
+                }
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SELECT OPTION
+        ====================================================== */
+
+        function selectOption(
+            group,
+            value,
+            button
+        ) {
+
+            preferences[group] =
+                value;
+
+
+            const container =
+                document.getElementById(
+                    `${group}-options`
+                );
+
+
+            if (container) {
+
+                container
+                    .querySelectorAll(
+                        ".option-btn"
+                    )
+                    .forEach(
+                        btn => {
+
+                            btn.classList.remove(
+                                "selected"
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            button.classList.add(
+                "selected"
+            );
+
+
+            markQuestionCompleted(
+                group,
+                value
+            );
+
+
+            const currentIndex =
+                QUESTION_ORDER.indexOf(
+                    group
+                );
+
+
+            const nextIndex =
+                currentIndex + 1;
+
+
+            setTimeout(
+                () => {
+
+                    if (
+                        nextIndex <
+                        QUESTION_ORDER.length
+                    ) {
+
+                        showAIMessage(
+                            CONVERSATION_MESSAGES[group].next
+                        );
+
+                        showQuestion(
+                            nextIndex
+                        );
+
+                    }
+                    else {
+
+                        showAIMessage(
+                            CONVERSATION_MESSAGES.color.next
+                        );
+
+                        showFinalState();
+
+                    }
+
+                },
+                500
+            );
+
+        }
+
+
+        /* =====================================================
+           COMPLETED QUESTION
+        ====================================================== */
+
+        function markQuestionCompleted(
+            group,
+            value
+        ) {
+
+            const card =
+                document.getElementById(
+                    `question-${group}`
+                );
+
+
+            if (!card) {
+
+                return;
+
+            }
+
+
+            const heading =
+                card.querySelector(
+                    ".preference-heading"
+                );
+
+
+            const subtitle =
+                card.querySelector(
+                    ".question-subtitle"
+                );
+
+
+            const options =
+                card.querySelector(
+                    ".preference-options"
+                );
+
+
+            if (heading) {
+
+                heading.style.display =
+                    "none";
+
+            }
+
+
+            if (subtitle) {
+
+                subtitle.style.display =
+                    "none";
+
+            }
+
+
+            if (options) {
+
+                options.style.display =
+                    "none";
+
+            }
+
+
+            card.classList.remove(
+                "active-question"
+            );
+
+            card.classList.add(
+                "completed-question"
+            );
+
+
+            const completedLeft =
+                document.createElement(
+                    "div"
+                );
+
+            completedLeft.className =
+                "completed-left";
+
+
+            const check =
+                document.createElement(
+                    "div"
+                );
+
+            check.className =
+                "completed-check";
+
+            check.textContent =
+                "✓";
+
+
+            const label =
+                document.createElement(
+                    "div"
+                );
+
+            label.className =
+                "completed-label";
+
+
+            const small =
+                document.createElement(
+                    "small"
+                );
+
+            small.textContent =
+                group;
+
+
+            const strong =
+                document.createElement(
+                    "strong"
+                );
+
+            strong.textContent =
+                value;
+
+
+            label.appendChild(
+                small
+            );
+
+            label.appendChild(
+                strong
+            );
+
+
+            completedLeft.appendChild(
+                check
+            );
+
+            completedLeft.appendChild(
+                label
+            );
+
+
+            const edit =
+                document.createElement(
+                    "button"
+                );
+
+            edit.type =
+                "button";
+
+            edit.className =
+                "completed-edit";
+
+            edit.textContent =
+                "Edit";
+
+
+            edit.addEventListener(
+                "click",
+                () => {
+
+                    resetFromQuestion(
+                        group
+                    );
+
+                }
+            );
+
+
+            card.innerHTML = "";
+
+            card.appendChild(
+                completedLeft
+            );
+
+            card.appendChild(
+                edit
+            );
+
+        }
+
+
+        /* =====================================================
+           EDIT QUESTION
+        ====================================================== */
+
+        function resetFromQuestion(
+            group
+        ) {
+
+            const index =
+                QUESTION_ORDER.indexOf(
+                    group
+                );
+
+
+            if (
+                index === -1
+            ) {
+
+                return;
+
+            }
+
+
+            for (
+                let i = index;
+                i < QUESTION_ORDER.length;
+                i++
+            ) {
+
+                const currentGroup =
+                    QUESTION_ORDER[i];
+
+
+                preferences[currentGroup] =
+                    null;
+
+
+                const card =
+                    document.getElementById(
+                        `question-${currentGroup}`
+                    );
+
+
+                if (!card) {
+
+                    continue;
+
+                }
+
+
+                card.classList.remove(
+                    "completed-question"
+                );
+
+                card.classList.remove(
+                    "active-question"
+                );
+
+
+                card.innerHTML = getQuestionHTML(
+                    currentGroup,
+                    i
+                );
+
+
+                rebuildQuestionButtons(
+                    currentGroup
+                );
+
+            }
+
+
+            currentQuestionIndex =
+                index;
+
+
+            showQuestion(
+                index
+            );
+
+
+            showAIMessage(
+                `No problem ✨ Let's change your <strong>${group}</strong> choice.`
+            );
+
+        }
+
+
+        /* =====================================================
+           QUESTION HTML
+        ====================================================== */
+
+        function getQuestionHTML(
+            group,
+            index
+        ) {
+
+            const titles = {
+
+                occasion:
+                    "What's the occasion?",
+
+                style:
+                    "What's your style?",
+
+                length:
+                    "What nail length do you prefer?",
+
+                shape:
+                    "Which nail shape do you love?",
+
+                color:
+                    "What color are you feeling?"
+
+            };
+
+
+            const subtitles = {
+
+                occasion:
+                    "Where are you planning to show off your nails?",
+
+                style:
+                    "Pick the vibe that feels most like you.",
+
+                length:
+                    "Keep it natural or make a statement.",
+
+                shape:
+                    "Choose the silhouette you'd like to wear.",
+
+                color:
+                    "Pick the color you're drawn to."
+
+            };
+
+
+            return `
+
+                <div class="preference-heading">
+
+                    <div class="preference-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <strong>
+                        ${titles[group]}
+                    </strong>
+
+                </div>
+
+                <p class="question-subtitle">
+                    ${subtitles[group]}
+                </p>
+
+                <div
+                    class="preference-options"
+                    id="${group}-options"
+                ></div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           REBUILD BUTTONS
+        ====================================================== */
+
+        function rebuildQuestionButtons(
+            group
+        ) {
+
+            const container =
+                document.getElementById(
+                    `${group}-options`
+                );
+
+
+            if (!container) {
+
+                return;
+
+            }
+
+
+            container.innerHTML = "";
+
+
+            OPTIONS[group].forEach(
+                option => {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.type =
+                        "button";
+
+                    button.className =
+                        "option-btn";
+
+                    button.textContent =
+                        option;
+
+                    button.dataset.value =
+                        option;
+
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            selectOption(
+                                group,
+                                option,
+                                button
+                            );
+
+                        }
+                    );
+
+
+                    container.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           FINAL STATE
+        ====================================================== */
+
+        function showFinalState() {
+
+            currentQuestionIndex =
+                5;
+
+
+            updateProgress();
+
+
+            const thinkingText =
+                document.getElementById(
+                    "thinking-text"
+                );
+
+
+            if (thinkingText) {
+
+                thinkingText.textContent =
+                    "Everything is ready ✨";
+
+            }
+
+
+            const searchButton =
+                document.getElementById(
+                    "search-btn"
+                );
+
+
+            if (
+                searchButton &&
+                designsLoaded
+            ) {
+
+                searchButton.disabled =
+                    false;
+
+                searchButton.classList.add(
+                    "show-search"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SEARCH STATE
+        ====================================================== */
+
+        function refreshSearchState() {
+
+            const searchButton =
+                document.getElementById(
+                    "search-btn"
+                );
+
+
+            const selectedCount =
+                Object.values(
+                    preferences
+                )
+                .filter(
+                    value =>
+                        value !== null
+                )
+                .length;
+
+
+            if (
+                selectedCount === 5 &&
+                designsLoaded
+            ) {
+
+                searchButton.disabled =
+                    false;
+
+            }
+            else {
+
+                searchButton.disabled =
+                    true;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TEST SUPABASE
+        ====================================================== */
+
+        async function testSupabase() {
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .from("nail_designs")
+                        .select("id")
+                        .limit(1);
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase connection error:",
+                        error
+                    );
+
+                    return false;
+
+                }
+
+
+                console.log(
+                    "Supabase connected successfully!"
+                );
+
+
+                return true;
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Supabase connection failed:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           LOAD DESIGNS
+        ====================================================== */
+
+        async function loadDesigns() {
+
+            console.log(
+                "Loading nail designs from Supabase..."
+            );
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .from("nail_designs")
+                        .select("*")
+                        .order(
+                            "id",
+                            {
+                                ascending: true
+                            }
+                        );
+
+
+                if (error) {
+
+                    console.error(
+                        "Error loading designs:",
+                        error
+                    );
+
+
+                    designsLoaded =
+                        false;
+
+
+                    refreshSearchState();
+
+
+                    return;
+
+                }
+
+
+                designs =
+                    (data || []).map(
+                        design => ({
+
+                            id:
+                                design.id,
+
+                            image_url:
+                                design.image_url ||
+                                "",
+
+                            file:
+                                design.file ||
+                                "",
+
+                            category:
+                                design.category ||
+                                "Nail Design",
+
+                            occasion:
+                                design.occasion ||
+                                "",
+
+                            style:
+                                design.style ||
+                                "",
+
+                            length:
+                                design.nail_length ||
+                                "",
+
+                            shape:
+                                design.shape ||
+                                "",
+
+                            color:
+                                design.color ||
+                                "",
+
+                            created_at:
+                                design.created_at ||
+                                ""
+
+                        })
+                    );
+
+
+                designsLoaded =
+                    true;
+
+
+                console.log(
+                    "Designs loaded successfully:",
+                    designs
+                );
+
+
+                refreshSearchState();
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Unexpected error loading designs:",
+                    error
+                );
+
+
+                designsLoaded =
+                    false;
+
+
+                refreshSearchState();
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SCORE DESIGN
+        ====================================================== */
+
+        function scoreDesign(
+            design,
+            p
+        ) {
+
+            let score = 0;
+
+
+            /* COLOR */
+
+            if (
+
+                design.color &&
+                p.color &&
+
+                (
+                    normalize(
+                        design.color
+                    ) ===
+                    normalize(
+                        p.color
+                    )
+
+                    ||
+
+                    p.color === "Any"
+
+                    ||
+
+                    normalize(
+                        design.color
+                    ) === "any"
+                )
+
+            ) {
+
+                score +=
+                    WEIGHTS.color;
+
+            }
+
+
+            /* SHAPE */
+
+            if (
+
+                design.shape &&
+                p.shape &&
+
+                normalize(
+                    design.shape
+                ) ===
+                normalize(
+                    p.shape
+                )
+
+            ) {
+
+                score +=
+                    WEIGHTS.shape;
+
+            }
+
+
+            /* OCCASION */
+
+            if (
+
+                design.occasion &&
+                p.occasion &&
+
+                normalize(
+                    design.occasion
+                ) ===
+                normalize(
+                    p.occasion
+                )
+
+            ) {
+
+                score +=
+                    WEIGHTS.occasion;
+
+            }
+
+
+            /* STYLE */
+
+            if (
+
+                design.style &&
+                p.style &&
+
+                normalize(
+                    design.style
+                ) ===
+                normalize(
+                    p.style
+                )
+
+            ) {
+
+                score +=
+                    WEIGHTS.style;
+
+            }
+
+
+            /* LENGTH */
+
+            if (
+
+                design.length &&
+                p.length &&
+
+                normalize(
+                    design.length
+                ) ===
+                normalize(
+                    p.length
+                )
+
+            ) {
+
+                score +=
+                    WEIGHTS.length;
+
+            }
+
+
+            return score;
+
+        }
+
+
+        /* =====================================================
+           MATCH CHECKS
+        ====================================================== */
+
+        function matchesColor(
+            design,
+            p
+        ) {
+
+            if (
+                !design.color ||
+                !p.color
+            ) {
+
+                return false;
+
+            }
+
+
+            return (
+
+                normalize(
+                    design.color
+                ) ===
+                normalize(
+                    p.color
+                )
+
+                ||
+
+                p.color === "Any"
+
+                ||
+
+                normalize(
+                    design.color
+                ) === "any"
+
+            );
+
+        }
+
+
+        function matchesShape(
+            design,
+            p
+        ) {
+
+            return (
+
+                design.shape &&
+                p.shape &&
+
+                normalize(
+                    design.shape
+                ) ===
+                normalize(
+                    p.shape
+                )
+
+            );
+
+        }
+
+
+        function matchesOccasion(
+            design,
+            p
+        ) {
+
+            return (
+
+                design.occasion &&
+                p.occasion &&
+
+                normalize(
+                    design.occasion
+                ) ===
+                normalize(
+                    p.occasion
+                )
+
+            );
+
+        }
+
+
+        /* =====================================================
+           FIND MATCHES
+        ====================================================== */
+
+        function findMatches() {
+
+            const scored =
+                designs.map(
+                    design => {
+
+                        return {
+
+                            design:
+                                design,
+
+                            score:
+                                scoreDesign(
+                                    design,
+                                    preferences
+                                ),
+
+                            colorMatch:
+                                matchesColor(
+                                    design,
+                                    preferences
+                                )
+                                    ? 1
+                                    : 0,
+
+                            shapeMatch:
+                                matchesShape(
+                                    design,
+                                    preferences
+                                )
+                                    ? 1
+                                    : 0,
+
+                            occasionMatch:
+                                matchesOccasion(
+                                    design,
+                                    preferences
+                                )
+                                    ? 1
+                                    : 0
+
+                        };
+
+                    }
+                );
+
+
+            scored.sort(
+                (a, b) => {
+
+                    if (
+                        b.score !==
+                        a.score
+                    ) {
+
+                        return (
+                            b.score -
+                            a.score
+                        );
+
+                    }
+
+
+                    if (
+                        b.colorMatch !==
+                        a.colorMatch
+                    ) {
+
+                        return (
+                            b.colorMatch -
+                            a.colorMatch
+                        );
+
+                    }
+
+
+                    if (
+                        b.shapeMatch !==
+                        a.shapeMatch
+                    ) {
+
+                        return (
+                            b.shapeMatch -
+                            a.shapeMatch
+                        );
+
+                    }
+
+
+                    if (
+                        b.occasionMatch !==
+                        a.occasionMatch
+                    ) {
+
+                        return (
+                            b.occasionMatch -
+                            a.occasionMatch
+                        );
+
+                    }
+
+
+                    return 0;
+
+                }
+            );
+
+
+            return scored;
+
+        }
+
+
+        /* =====================================================
+           PLACEHOLDER
+        ====================================================== */
+
+        function placeholderNodeHTML() {
+
+            return `
+
+                <div class="placeholder">
+
+                    <div class="placeholder-icon">
+                        💅
+                    </div>
+
+                    <strong>
+                        Image coming soon
+                    </strong>
+
+                    <small>
+                        Add a valid image URL in Supabase.
+                    </small>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           CREATE DESIGN CARD
+        ====================================================== */
+
+        function createDesignCard(
+            item
+        ) {
+
+            const design =
+                item.design;
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "design-card";
+
+
+            const imageWrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            imageWrapper.className =
+                "image-wrapper";
+
+
+            const scoreBadge =
+                document.createElement(
+                    "div"
+                );
+
+
+            scoreBadge.className =
+                "score-badge";
+
+
+            scoreBadge.textContent =
+                `${item.score}/14 match`;
+
+
+            const heartButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            heartButton.className =
+                "heart-btn";
+
+
+            heartButton.type =
+                "button";
+
+
+            heartButton.textContent =
+                "♡";
+
+
+            heartButton.title =
+                "Save design";
+
+
+            heartButton.addEventListener(
+                "click",
+                () => {
+
+                    heartButton.textContent =
+                        heartButton.textContent ===
+                        "♡"
+                            ? "♥"
+                            : "♡";
+
+                }
+            );
+
+
+            if (design.image_url) {
+
+                const img =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                img.src =
+                    design.image_url;
+
+
+                img.alt =
+                    `${design.color || ""} ${design.style || ""} nail design`;
+
+
+                img.loading =
+                    "lazy";
+
+
+                img.onerror =
+                    function () {
+
+                        imageWrapper.innerHTML =
+                            placeholderNodeHTML();
+
+
+                        imageWrapper.appendChild(
+                            scoreBadge
+                        );
+
+
+                        imageWrapper.appendChild(
+                            heartButton
+                        );
+
+                    };
+
+
+                imageWrapper.appendChild(
+                    img
+                );
+
+            }
+            else {
+
+                imageWrapper.innerHTML =
+                    placeholderNodeHTML();
+
+            }
+
+
+            imageWrapper.appendChild(
+                scoreBadge
+            );
+
+
+            imageWrapper.appendChild(
+                heartButton
+            );
+
+
+            const content =
+                document.createElement(
+                    "div"
+                );
+
+
+            content.className =
+                "design-content";
+
+
+            const category =
+                document.createElement(
+                    "div"
+                );
+
+
+            category.className =
+                "design-category";
+
+
+            category.textContent =
+                design.category ||
+                "Nail Design";
+
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+
+            title.className =
+                "design-title";
+
+
+            title.textContent =
+                getDesignTitle(
+                    design
+                );
+
+
+            const tags =
+                document.createElement(
+                    "div"
+                );
+
+
+            tags.className =
+                "tags";
+
+
+            addTag(
+                tags,
+                design.color
+            );
+
+
+            addTag(
+                tags,
+                design.shape
+            );
+
+
+            addTag(
+                tags,
+                design.occasion
+            );
+
+
+            addTag(
+                tags,
+                design.style
+            );
+
+
+            addTag(
+                tags,
+                design.length
+            );
+
+
+            const actions =
+                document.createElement(
+                    "div"
+                );
+
+
+            actions.className =
+                "design-actions";
+
+
+            const viewLink =
+                document.createElement(
+                    "a"
+                );
+
+
+            viewLink.href =
+                design.image_url ||
+                "#";
+
+
+            viewLink.target =
+                "_blank";
+
+
+            viewLink.rel =
+                "noopener noreferrer";
+
+
+            viewLink.textContent =
+                "View Photo";
+
+
+            const downloadLink =
+                document.createElement(
+                    "a"
+                );
+
+
+            downloadLink.href =
+                design.image_url ||
+                "#";
+
+
+            downloadLink.download =
+                getDownloadFileName(
+                    design
+                );
+
+
+            downloadLink.textContent =
+                "Download Photo";
+
+
+            downloadLink.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        !design.image_url
+                    ) {
+
+                        event.preventDefault();
+
+                    }
+
+                }
+            );
+
+
+            actions.appendChild(
+                viewLink
+            );
+
+
+            actions.appendChild(
+                downloadLink
+            );
+
+
+            content.appendChild(
+                category
+            );
+
+
+            content.appendChild(
+                title
+            );
+
+
+            content.appendChild(
+                tags
+            );
+
+
+            content.appendChild(
+                actions
+            );
+
+
+            card.appendChild(
+                imageWrapper
+            );
+
+
+            card.appendChild(
+                content
+            );
+
+
+            return card;
+
+        }
+
+
+        /* =====================================================
+           DESIGN TITLE
+        ====================================================== */
+
+        function getDesignTitle(
+            design
+        ) {
+
+            const parts = [];
+
+
+            if (design.color) {
+
+                parts.push(
+                    design.color
+                );
+
+            }
+
+
+            if (design.style) {
+
+                parts.push(
+                    design.style
+                );
+
+            }
+
+
+            if (design.shape) {
+
+                parts.push(
+                    design.shape
+                );
+
+            }
+
+
+            if (
+                parts.length === 0
+            ) {
+
+                return "Beautiful Nail Design";
+
+            }
+
+
+            return parts.join(" ");
+
+        }
+
+
+        /* =====================================================
+           DOWNLOAD FILE NAME
+        ====================================================== */
+
+        function getDownloadFileName(
+            design
+        ) {
+
+            const color =
+                normalize(
+                    design.color ||
+                    "nail"
+                );
+
+
+            const shape =
+                normalize(
+                    design.shape ||
+                    "design"
+                );
+
+
+            return `lustre-${color}-${shape}.jpg`;
+
+        }
+
+
+        /* =====================================================
+           ADD TAG
+        ====================================================== */
+
+        function addTag(
+            container,
+            value
+        ) {
+
+            if (!value) {
+
+                return;
+
+            }
+
+
+            const tag =
+                document.createElement(
+                    "span"
+                );
+
+
+            tag.className =
+                "tag";
+
+
+            tag.textContent =
+                value;
+
+
+            container.appendChild(
+                tag
+            );
+
+        }
+
+
+        /* =====================================================
+           HANDLE SEARCH
+        ====================================================== */
+
+        function handleSearch() {
+
+            if (!designsLoaded) {
+
+                return;
+
+            }
+
+
+            const resultsSection =
+                document.getElementById(
+                    "results-section"
+                );
+
+
+            const resultsGrid =
+                document.getElementById(
+                    "results-grid"
+                );
+
+
+            const resultsNote =
+                document.getElementById(
+                    "results-note"
+                );
+
+
+            const matches =
+                findMatches();
+
+
+            resultsGrid.innerHTML =
+                "";
+
+
+            resultsSection.style.display =
+                "block";
+
+
+            if (
+                matches.length === 0
+            ) {
+
+                resultsGrid.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <h3>
+                            No designs yet
+                        </h3>
+
+                        <p>
+                            Add some nail designs to
+                            your Supabase table first.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                resultsNote.textContent =
+                    "";
+
+
+                return;
+
+            }
+
+
+            const topMatches =
+                matches.slice(
+                    0,
+                    6
+                );
+
+
+            const bestScore =
+                topMatches[0]
+                    ? topMatches[0].score
+                    : 0;
+
+
+            resultsNote.textContent =
+                `I found ${topMatches.length} design${topMatches.length === 1 ? "" : "s"} for you. Your strongest match is ${bestScore}/14.`;
+
+
+            topMatches.forEach(
+                item => {
+
+                    resultsGrid.appendChild(
+                        createDesignCard(
+                            item
+                        )
+                    );
+
+                }
+            );
+
+
+            resultsSection.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }
+
+
+        /* =====================================================
+           SEARCH BUTTON
+        ====================================================== */
+
+        document
+            .getElementById(
+                "search-btn"
+            )
+            .addEventListener(
+                "click",
+                handleSearch
+            );
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            async function () {
+
+                buildPickers();
+
+                updateProgress();
+
+                await testSupabase();
+
+                await loadDesigns();
+
+                refreshSearchState();
+
+            }
+        );
+
+    </script>
+
+
+    <!-- EXISTING SITE JAVASCRIPT -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
+

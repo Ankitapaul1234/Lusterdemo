@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Book Appointment | Lustre Nail Studio</title>
+
+
+<!-- =====================================================
+     GOOGLE FONTS
+====================================================== -->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =====================================================
+     MAIN CSS
+====================================================== -->
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =====================================================
+     CUSTOMER SUPPORT STYLES
+====================================================== -->
+
+<style>
+
+    .support-floating-btn {
+
+        position: fixed;
+
+        right: 28px;
+
+        bottom: 28px;
+
+        width: 62px;
+
+        height: 62px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background: #b76e79;
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 25px;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 12px 30px
+            rgba(80, 40, 45, 0.25);
+
+        z-index: 9998;
+
+        transition: all 0.25s ease;
+    }
+
+
+    .support-floating-btn:hover {
+
+        transform:
+            translateY(-4px)
+            scale(1.04);
+
+        box-shadow:
+            0 16px 35px
+            rgba(80, 40, 45, 0.32);
+    }
+
+
+    .support-floating-label {
+
+        position: fixed;
+
+        right: 100px;
+
+        bottom: 40px;
+
+        background:
+            var(--card, #ffffff);
+
+        color:
+            var(--text, #292326);
+
+        padding: 10px 15px;
+
+        border-radius: 20px;
+
+        font-family:
+            "DM Sans",
+            sans-serif;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        box-shadow:
+            0 8px 25px
+            rgba(50, 30, 35, 0.12);
+
+        border:
+            1px solid
+            rgba(180, 120, 130, 0.15);
+
+        z-index: 9997;
+
+        white-space: nowrap;
+
+        animation:
+            supportLabelFloat
+            3s ease-in-out infinite;
+    }
+
+
+    @keyframes supportLabelFloat {
+
+        0%,
+        100% {
+
+            transform:
+                translateY(0);
+        }
+
+        50% {
+
+            transform:
+                translateY(-3px);
+        }
+
+    }
+
+
+    .support-popup {
+
+        position: fixed;
+
+        right: 28px;
+
+        bottom: 105px;
+
+        width: 420px;
+
+        height: 680px;
+
+        background: #ffffff;
+
+        border-radius: 25px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 25px 70px
+            rgba(50, 30, 35, 0.25);
+
+        border:
+            1px solid
+            rgba(180, 120, 130, 0.18);
+
+        z-index: 9999;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform:
+            translateY(20px)
+            scale(0.96);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .support-popup.open {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+
+    .support-popup iframe {
+
+        width: 100%;
+
+        height: 100%;
+
+        border: none;
+
+        display: block;
+    }
+
+
+    .support-close {
+
+        position: absolute;
+
+        top: 12px;
+
+        right: 12px;
+
+        width: 34px;
+
+        height: 34px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255, 255, 255, 0.95);
+
+        color: #333;
+
+        font-size: 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        cursor: pointer;
+
+        z-index: 10;
+
+        box-shadow:
+            0 4px 15px
+            rgba(0, 0, 0, 0.15);
+
+        transition: 0.2s ease;
+    }
+
+
+    .support-close:hover {
+
+        transform:
+            rotate(90deg);
+
+        background:
+            #f3e4e6;
+    }
+
+
+    [data-theme="dark"]
+    .support-popup {
+
+        background:
+            #211c1e;
+
+        border-color:
+            #3a3033;
+    }
+
+
+    [data-theme="dark"]
+    .support-floating-label {
+
+        background:
+            #211c1e;
+
+        color:
+            #f7eeee;
+
+        border-color:
+            #3a3033;
+    }
+
+
+    @media (max-width: 600px) {
+
+        .support-floating-btn {
+
+            width: 56px;
+
+            height: 56px;
+
+            right: 18px;
+
+            bottom: 18px;
+
+            font-size: 22px;
+        }
+
+
+        .support-floating-label {
+
+            display: none;
+        }
+
+
+        .support-popup {
+
+            left: 10px;
+
+            right: 10px;
+
+            bottom: 85px;
+
+            width: auto;
+
+            height:
+                calc(100vh - 110px);
+
+            max-height: 720px;
+
+            border-radius: 22px;
+        }
+
+    }
+
+
+    /* =====================================================
+       BOOKING FORM STATUS
+    ====================================================== */
+
+    .booking-status {
+
+        display: none;
+
+        margin-top: 18px;
+
+        padding: 14px 16px;
+
+        border-radius: 12px;
+
+        font-family:
+            "DM Sans",
+            sans-serif;
+
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    .booking-status.success {
+
+        display: block;
+
+        background: #edf8f0;
+
+        color: #28613a;
+
+        border: 1px solid #ccebd4;
+    }
+
+
+    .booking-status.error {
+
+        display: block;
+
+        background: #fff0f0;
+
+        color: #8b3030;
+
+        border: 1px solid #f0cccc;
+    }
+
+
+    .booking-status.loading {
+
+        display: block;
+
+        background: #f7f2f3;
+
+        color: #5e4b50;
+
+        border: 1px solid #eadde0;
+    }
+
+
+    .button:disabled {
+
+        opacity: 0.6;
+
+        cursor: not-allowed;
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+
+<a
+    href="index.html"
+    class="brand"
+>
+
+    <span class="brand-mark">
+        L
+    </span>
+
+    <span>
+        LUSTRE
+    </span>
+
+</a>
+
+
+<!-- Mobile Menu -->
+
+<button
+    class="menu-toggle"
+    onclick="toggleMenu()"
+>
+    ☰
+</button>
+
+
+<nav
+    class="nav"
+    id="nav"
+>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="services.html">
+        Services
+    </a>
+
+    <a href="gallery.html">
+        Gallery
+    </a>
+
+    <a
+        href="booking.html"
+        class="active"
+    >
+        Book
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+
+    <!-- Dark Mode -->
+
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        onclick="toggleTheme()"
+    >
+        ☾
+    </button>
+
+
+    <a
+        href="booking.html"
+        class="nav-cta"
+    >
+        Book appointment ↗
+    </a>
+
+</nav>
+
+</header>
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+<!-- =================================================
+     PAGE HERO
+================================================= -->
+
+<section class="page-hero">
+
+    <div>
+
+        <p class="eyebrow">
+            RESERVE YOUR TIME
+        </p>
+
+        <h1>
+            Make time
+            <br>
+            for <em>you.</em>
+        </h1>
+
+        <p>
+            Choose a service, date and preferred time.
+            Your appointment request will be saved securely.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     BOOKING SECTION
+================================================= -->
+
+<section class="section">
+
+    <div class="booking-layout">
+
+
+        <!-- =========================
+             LEFT CONTENT
+        ========================== -->
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR APPOINTMENT
+            </p>
+
+            <h2>
+                One beautiful
+                <br>
+                <em>hour.</em>
+            </h2>
+
+            <p>
+                We'll keep the experience simple:
+                select your service, choose an available
+                slot and confirm your details.
+            </p>
+
+
+            <!-- Booking Promise -->
+
+            <div class="booking-promise">
+
+                <span>✓</span>
+
+                Secure booking
+
+            </div>
+
+
+            <div class="booking-promise">
+
+                <span>✓</span>
+
+                Live availability
+
+            </div>
+
+
+            <div class="booking-promise">
+
+                <span>✓</span>
+
+                Pay at studio
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             BOOKING CARD
+        ========================== -->
+
+        <div class="booking-card">
+
+
+            <!-- STEP 01 -->
+
+            <div class="step">
+
+                <span>
+                    01
+                </span>
+
+                Choose your service
+
+            </div>
+
+
+            <!-- SERVICES -->
+
+            <div class="service-options">
+
+
+                <button
+                    type="button"
+                    class="option active"
+                    data-value="Signature Nail Art"
+                >
+
+                    <span>
+                        Signature Nail Art
+                    </span>
+
+                    <small>
+                        ₹1,299+
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="option"
+                    data-value="Gel Manicure"
+                >
+
+                    <span>
+                        Gel Manicure
+                    </span>
+
+                    <small>
+                        ₹899+
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="option"
+                    data-value="Nail Extensions"
+                >
+
+                    <span>
+                        Nail Extensions
+                    </span>
+
+                    <small>
+                        ₹1,499+
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="option"
+                    data-value="Classic Manicure"
+                >
+
+                    <span>
+                        Classic Manicure
+                    </span>
+
+                    <small>
+                        ₹599+
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- DATE + TIME -->
+
+            <div class="form-row">
+
+
+                <label>
+
+                    <span>
+                        02 · Date
+                    </span>
+
+                    <input
+                        id="dateInput"
+                        type="date"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    <span>
+                        03 · Time
+                    </span>
+
+                    <select
+                        id="timeInput"
+                        required
+                    >
+
+                        <option value="">
+                            Select a time
+                        </option>
+
+                        <option value="10:00 AM">
+                            10:00 AM
+                        </option>
+
+                        <option value="11:30 AM">
+                            11:30 AM
+                        </option>
+
+                        <option value="1:00 PM">
+                            1:00 PM
+                        </option>
+
+                        <option value="2:30 PM">
+                            2:30 PM
+                        </option>
+
+                        <option value="4:00 PM">
+                            4:00 PM
+                        </option>
+
+                        <option value="5:30 PM">
+                            5:30 PM
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+            </div>
+
+
+
+            <!-- NAME + PHONE -->
+
+            <div class="form-row">
+
+
+                <label>
+
+                    <span>
+                        Your name
+                    </span>
+
+                    <input
+                        id="nameInput"
+                        type="text"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    <span>
+                        Phone number
+                    </span>
+
+                    <input
+                        id="phoneInput"
+                        type="tel"
+                        placeholder="+91 XXXXX XXXXX"
+                        required
+                    >
+
+                </label>
+
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <label>
+
+                <span>
+                    Email address
+                </span>
+
+                <input
+                    id="emailInput"
+                    type="email"
+                    placeholder="you@example.com"
+                >
+
+            </label>
+
+
+
+            <!-- SPECIAL REQUEST -->
+
+            <label>
+
+                <span>
+                    Anything you'd like us to know?
+                </span>
+
+                <textarea
+                    id="specialRequestInput"
+                    rows="4"
+                    placeholder="Nail style, reference, special request..."
+                ></textarea>
+
+            </label>
+
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div style="margin-top: 20px;">
+
+                <div class="step">
+
+                    <span>
+                        04
+                    </span>
+
+                    Payment option
+
+                </div>
+
+
+                <label
+                    style="
+                        display:flex;
+                        align-items:flex-start;
+                        gap:12px;
+                        padding:15px;
+                        border:1px solid rgba(180,120,130,.20);
+                        border-radius:12px;
+                        margin-top:12px;
+                        cursor:pointer;
+                    "
+                >
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="none"
+                        checked
+                        style="margin-top:4px;"
+                    >
+
+                    <span>
+
+                        <strong>
+                            Book without payment
+                        </strong>
+
+                        <br>
+
+                        <small>
+                            Request your appointment and pay at the studio.
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- ONLINE PAYMENT — COMING LATER -->
+
+                <label
+                    style="
+                        display:flex;
+                        align-items:flex-start;
+                        gap:12px;
+                        padding:15px;
+                        border:1px solid rgba(180,120,130,.20);
+                        border-radius:12px;
+                        margin-top:10px;
+                        opacity:.55;
+                        cursor:not-allowed;
+                    "
+                >
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="online"
+                        disabled
+                        style="margin-top:4px;"
+                    >
+
+                    <span>
+
+                        <strong>
+                            Pay online
+                        </strong>
+
+                        <br>
+
+                        <small>
+                            Online payment will be available soon.
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="button"
+                id="submitButton"
+                class="button full-button"
+                onclick="submitBooking()"
+            >
+                Book Appointment →
+            </button>
+
+
+            <!-- STATUS -->
+
+            <div
+                id="bookingStatus"
+                class="booking-status"
+            ></div>
+
+
+            <p class="disclaimer">
+
+                Your appointment request will be saved
+                securely. The studio will confirm your request.
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     CONFIRMATION MODAL
+================================================= -->
+
+<div
+    class="modal"
+    id="confirmationModal"
+>
+
+    <div class="modal-box">
+
+
+        <button
+            class="modal-close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-check">
+            ✓
+        </div>
+
+
+        <p class="eyebrow">
+            APPOINTMENT REQUEST
+        </p>
+
+
+        <h2>
+            You're almost
+            <em>booked.</em>
+        </h2>
+
+
+        <p id="confirmationText"></p>
+
+
+        <button
+            class="button full-button"
+            onclick="closeModal()"
+        >
+            Done
+        </button>
+
+
+    </div>
+
+</div>
+
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer
+    class="footer"
+    id="contact"
+>
+
+<div class="footer-top">
+
+
+    <!-- BRAND -->
+
+    <div>
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                L
+            </span>
+
+            <span>
+                LUSTRE
+            </span>
+
+        </a>
+
+        <p>
+            Modern nail art & mindful beauty
+            <br>
+            in the heart of the city.
+        </p>
+
+    </div>
+
+
+    <!-- VISIT -->
+
+    <div>
+
+        <h4>
+            Visit
+        </h4>
+
+        <p>
+            24 Rose Avenue
+            <br>
+            Kolkata, West Bengal
+        </p>
+
+    </div>
+
+
+    <!-- HOURS -->
+
+    <div>
+
+        <h4>
+            Hours
+        </h4>
+
+        <p>
+            Mon–Sat · 10 AM–7 PM
+            <br>
+            Sunday · By appointment
+        </p>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <div>
+
+        <h4>
+            Say hello
+        </h4>
+
+        <p>
+            +91 98765 43210
+            <br>
+            hello@lustrestudio.in
+        </p>
+
+    </div>
+
+
+</div>
+
+
+<!-- FOOTER BOTTOM -->
+
+<div class="footer-bottom">
+
+    <span>
+        © 2026 Lustre Nail Studio
+    </span>
+
+    <span>
+        Instagram · Privacy · Terms
+    </span>
+
+</div>
+
+
+</footer>
+
+<!-- =====================================================
+     CUSTOMER SUPPORT FLOATING BUTTON
+====================================================== -->
+
+<button
+class="support-floating-btn"
+id="supportFloatingBtn"
+onclick="toggleSupport()"
+aria-label="Open Lustre Customer Support"
+
+>
+
+💬
+
+
+</button>
+
+<!-- =====================================================
+     NEED HELP LABEL
+====================================================== -->
+
+<div
+    class="support-floating-label"
+    id="supportFloatingLabel"
+>
+    Need help? 💗
+</div>
+
+<!-- =====================================================
+     CUSTOMER SUPPORT POPUP
+====================================================== -->
+
+<div
+    class="support-popup"
+    id="supportPopup"
+>
+
+
+<!-- CLOSE BUTTON -->
+
+<button
+    class="support-close"
+    onclick="toggleSupport()"
+    aria-label="Close customer support"
+>
+    ×
+</button>
+
+
+<!-- SUPPORT PAGE -->
+
+<iframe
+    src="support.html"
+    title="Lustre Customer Support"
+></iframe>
+
+
+</div>
+
+<!-- =====================================================
+     MAIN JAVASCRIPT
+====================================================== -->
+
+<script src="js/script.js"></script>
+
+<!-- =====================================================
+     SUPABASE + BOOKING JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
+
+const SUPABASE_URL =
+    "https://zicdkwygzozoxggxameu.supabase.co";
+
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_DR3xJbf7ljIStoDSR3WF6Q_BcnAzBwB";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+
+/* =====================================================
+   BACKEND CONFIGURATION
+===================================================== */
+
+const BACKEND_URL =
+    "https://luster-ainailstudio.onrender.com";
+
+
+/* =====================================================
+   SELECTED SERVICE
+===================================================== */
+
+let selectedService =
+    "Signature Nail Art";
+
+
+/* =====================================================
+   SERVICE SELECTION
+===================================================== */
+
+document
+    .querySelectorAll(".service-options .option")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                document
+                    .querySelectorAll(
+                        ".service-options .option"
+                    )
+                    .forEach(option => {
+
+                        option.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                this.classList.add("active");
+
+
+                selectedService =
+                    this.dataset.value;
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   DATE — PREVENT PAST DATES
+===================================================== */
+
+
+
+const today =
+    new Date();
+
+
+const year =
+    today.getFullYear();
+
+
+const month =
+    String(
+        today.getMonth() + 1
+    ).padStart(2, "0");
+
+
+const day =
+    String(
+        today.getDate()
+    ).padStart(2, "0");
+
+
+dateInput.min =
+    `${year}-${month}-${day}`;
+
+
+/* =====================================================
+   SHOW STATUS MESSAGE
+===================================================== */
+
+function showBookingStatus(
+    message,
+    type
+) {
+
+    const status =
+        document.getElementById(
+            "bookingStatus"
+        );
+
+
+    status.textContent =
+        message;
+
+
+    status.className =
+        "booking-status " + type;
+
+}
+
+
+/* =====================================================
+   SUBMIT BOOKING
+===================================================== */
+
+async function submitBooking() {
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    const name =
+        document.getElementById(
+            "nameInput"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "phoneInput"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "emailInput"
+        ).value.trim();
+
+
+    const date =
+        document.getElementById(
+            "dateInput"
+        ).value;
+
+
+    const time =
+        document.getElementById(
+            "timeInput"
+        ).value;
+
+
+    const specialRequest =
+        document.getElementById(
+            "specialRequestInput"
+        ).value.trim();
+
+
+    const selectedPayment =
+        document.querySelector(
+            'input[name="paymentMethod"]:checked'
+        );
+
+
+    const paymentMethod =
+        selectedPayment
+            ? selectedPayment.value
+            : "none";
+
+
+    /* =================================================
+       VALIDATION
+    ================================================= */
+
+    if (!name) {
+
+        showBookingStatus(
+            "Please enter your name.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!phone) {
+
+        showBookingStatus(
+            "Please enter your phone number.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!date) {
+
+        showBookingStatus(
+            "Please select an appointment date.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!time) {
+
+        showBookingStatus(
+            "Please select an appointment time.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* =================================================
+       PAYMENT VALIDATION
+    ================================================= */
+
+    if (paymentMethod === "online") {
+
+        showBookingStatus(
+            "Online payment is not enabled yet.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* =================================================
+       LOADING STATE
+    ================================================= */
+
+    submitButton.disabled =
+        true;
+
+
+    submitButton.textContent =
+        "Saving appointment...";
+
+
+    showBookingStatus(
+        "Submitting your appointment request...",
+        "loading"
+    );
+
+
+    try {
+
+
+        /* =============================================
+           INSERT APPOINTMENT INTO SUPABASE
+        ============================================= */
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("appointments")
+
+            .insert([{
+
+                customer_name:
+                    name,
+
+                phone:
+                    phone,
+
+                email:
+                    email || null,
+
+                service:
+                    selectedService,
+
+                appointment_date:
+                    date,
+
+                appointment_time:
+                    time,
+
+                special_request:
+                    specialRequest || null,
+
+                payment_method:
+                    "none",
+
+                payment_status:
+                    "not_required",
+
+                booking_status:
+                    "pending"
+
+            }])
+
+            .select()
+
+            .single();
+
+
+        /* =============================================
+           HANDLE SUPABASE ERROR
+        ============================================= */
+
+        if (error) {
+
+            console.error(
+                "Supabase booking error:",
+                error
+            );
+
+
+            if (
+                error.code === "23505"
+            ) {
+
+                showBookingStatus(
+                    "Sorry, this time slot has just been booked. Please choose another time.",
+                    "error"
+                );
+
+            } else {
+
+                showBookingStatus(
+                    "Something went wrong while saving your appointment. Please try again.",
+                    "error"
+                );
+
+            }
+
+
+            return;
+        }
+
+
+        /* =============================================
+           VERIFY APPOINTMENT ID
+        ============================================= */
+
+        if (
+            !data ||
+            !data.id
+        ) {
+
+            console.error(
+                "Appointment was saved but no appointment ID was returned:",
+                data
+            );
+
+
+            showBookingStatus(
+                "Appointment was saved, but we could not prepare the studio notification.",
+                "error"
+            );
+
+
+            return;
+        }
+
+
+        console.log(
+            "Appointment saved successfully:",
+            data
+        );
+
+
+        /* =============================================
+           SEND OWNER NOTIFICATION
+        ============================================= */
+
+        submitButton.textContent =
+            "Sending request...";
+
+
+        showBookingStatus(
+            "Appointment saved. Sending the request to the studio...",
+            "loading"
+        );
+
+
+        const notifyResponse =
+            await fetch(
+                `${BACKEND_URL}/api/appointments/notify`,
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            appointment_id:
+                                data.id
+
+                        })
+
+                }
+            );
+
+
+        /* =============================================
+           READ NOTIFICATION RESPONSE
+        ============================================= */
+
+        let notifyResult;
+
+
+        try {
+
+            notifyResult =
+                await notifyResponse.json();
+
+        }
+
+        catch (jsonError) {
+
+            console.error(
+                "Could not read notification response:",
+                jsonError
+            );
+
+
+            notifyResult = {
+
+                success: false,
+
+                message:
+                    "Invalid response from backend."
+
+            };
+
+        }
+
+
+        console.log(
+            "Owner notification response:",
+            notifyResult
+        );
+
+
+        /* =============================================
+           HANDLE NOTIFICATION ERROR
+        ============================================= */
+
+        if (
+            !notifyResponse.ok ||
+            !notifyResult.success
+        ) {
+
+            console.error(
+                "Owner notification failed:",
+                notifyResult
+            );
+
+
+            showBookingStatus(
+                "Your appointment was saved, but the studio notification could not be sent. Please contact the studio.",
+                "error"
+            );
+
+
+            return;
+        }
+
+
+        /* =============================================
+           EVERYTHING SUCCESSFUL
+        ============================================= */
+
+        console.log(
+            "Owner notification sent successfully."
+        );
+
+
+        showBookingStatus(
+            "Your appointment request has been submitted successfully. The studio will review it shortly.",
+            "success"
+        );
+
+
+        /* =============================================
+           CONFIRMATION MODAL
+        ============================================= */
+
+        document.getElementById(
+            "confirmationText"
+        ).textContent =
+
+            `Thank you, ${name}. Your request for ${selectedService} on ${date} at ${time} has been received. The studio will review your request and confirm the appointment.`;
+
+
+        document
+            .getElementById(
+                "confirmationModal"
+            )
+            .classList.add("open");
+
+
+        /* =============================================
+           RESET FORM
+        ============================================= */
+
+        document.getElementById(
+            "nameInput"
+        ).value = "";
+
+
+        document.getElementById(
+            "phoneInput"
+        ).value = "";
+
+
+        document.getElementById(
+            "emailInput"
+        ).value = "";
+
+
+        document.getElementById(
+            "dateInput"
+        ).value = "";
+
+
+        document.getElementById(
+            "timeInput"
+        ).value = "";
+
+
+        document.getElementById(
+            "specialRequestInput"
+        ).value = "";
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Unexpected booking error:",
+            error
+        );
+
+
+        /* =============================================
+           CHECK BACKEND / CORS / NETWORK ERROR
+        ============================================= */
+
+        if (
+            error instanceof TypeError
+        ) {
+
+            showBookingStatus(
+                "Appointment was saved, but the backend could not be reached. Please make sure the Lustre backend is running on port 5000.",
+                "error"
+            );
+
+        } else {
+
+            showBookingStatus(
+                "Unable to complete the appointment request. Please try again.",
+                "error"
+            );
+
+        }
+
+    }
+
+    finally {
+
+        submitButton.disabled =
+            false;
+
+
+        submitButton.textContent =
+            "Book Appointment →";
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE CONFIRMATION MODAL
+===================================================== */
+
+function closeModal() {
+
+    document
+        .getElementById(
+            "confirmationModal"
+        )
+        .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   CUSTOMER SUPPORT
+===================================================== */
+
+const supportPopup =
+    document.getElementById(
+        "supportPopup"
+    );
+
+
+const supportLabel =
+    document.getElementById(
+        "supportFloatingLabel"
+    );
+
+
+function toggleSupport() {
+
+    supportPopup.classList.toggle(
+        "open"
+    );
+
+
+    if (
+        supportPopup.classList.contains(
+            "open"
+        )
+    ) {
+
+        supportLabel.style.display =
+            "none";
+
+    } else {
+
+        supportLabel.style.display =
+            "";
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE SUPPORT WITH ESCAPE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            supportPopup.classList.contains(
+                "open"
+            )
+        ) {
+
+            toggleSupport();
+
+        }
+
+    }
+);
+
+
+</script>
+
+</body>
+
+</html>

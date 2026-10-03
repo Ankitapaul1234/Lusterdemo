@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Contact | Lustre Nail Studio</title>
+
+
+<!-- =========================
+     GOOGLE FONTS
+========================== -->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =========================
+     MAIN CSS
+========================== -->
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+
+<!-- =====================================================
+     CUSTOMER SUPPORT STYLES
+====================================================== -->
+
+<style>
+
+    /* =====================================================
+       CUSTOMER SUPPORT FLOATING BUTTON
+    ====================================================== */
+
+    .support-floating-btn {
+
+        position: fixed;
+
+        right: 28px;
+
+        bottom: 28px;
+
+        width: 62px;
+
+        height: 62px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background: #b76e79;
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 25px;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 12px 30px
+            rgba(80, 40, 45, 0.25);
+
+        z-index: 9998;
+
+        transition: all 0.25s ease;
+    }
+
+
+    .support-floating-btn:hover {
+
+        transform:
+            translateY(-4px)
+            scale(1.04);
+
+        box-shadow:
+            0 16px 35px
+            rgba(80, 40, 45, 0.32);
+    }
+
+
+    /* =====================================================
+       NEED HELP LABEL
+    ====================================================== */
+
+    .support-floating-label {
+
+        position: fixed;
+
+        right: 100px;
+
+        bottom: 40px;
+
+        background:
+            var(--card, #ffffff);
+
+        color:
+            var(--text, #292326);
+
+        padding: 10px 15px;
+
+        border-radius: 20px;
+
+        font-family:
+            "DM Sans",
+            sans-serif;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        box-shadow:
+            0 8px 25px
+            rgba(50, 30, 35, 0.12);
+
+        border:
+            1px solid
+            rgba(180, 120, 130, 0.15);
+
+        z-index: 9997;
+
+        white-space: nowrap;
+
+        animation:
+            supportLabelFloat
+            3s ease-in-out infinite;
+    }
+
+
+    @keyframes supportLabelFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-3px);
+        }
+
+    }
+
+
+    /* =====================================================
+       CUSTOMER SUPPORT POPUP
+    ====================================================== */
+
+    .support-popup {
+
+        position: fixed;
+
+        right: 28px;
+
+        bottom: 105px;
+
+        width: 420px;
+
+        height: 680px;
+
+        background: #ffffff;
+
+        border-radius: 25px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 25px 70px
+            rgba(50, 30, 35, 0.25);
+
+        border:
+            1px solid
+            rgba(180, 120, 130, 0.18);
+
+        z-index: 9999;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform:
+            translateY(20px)
+            scale(0.96);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    /* =====================================================
+       OPEN POPUP
+    ====================================================== */
+
+    .support-popup.open {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+
+    /* =====================================================
+       SUPPORT IFRAME
+    ====================================================== */
+
+    .support-popup iframe {
+
+        width: 100%;
+
+        height: 100%;
+
+        border: none;
+
+        display: block;
+    }
+
+
+    /* =====================================================
+       CLOSE BUTTON
+    ====================================================== */
+
+    .support-close {
+
+        position: absolute;
+
+        top: 12px;
+
+        right: 12px;
+
+        width: 34px;
+
+        height: 34px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255, 255, 255, 0.95);
+
+        color: #333;
+
+        font-size: 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        cursor: pointer;
+
+        z-index: 10;
+
+        box-shadow:
+            0 4px 15px
+            rgba(0, 0, 0, 0.15);
+
+        transition: 0.2s ease;
+    }
+
+
+    .support-close:hover {
+
+        transform: rotate(90deg);
+
+        background: #f3e4e6;
+    }
+
+
+    /* =====================================================
+       SUPPORT DARK MODE
+    ====================================================== */
+
+    [data-theme="dark"]
+    .support-popup {
+
+        background: #211c1e;
+
+        border-color: #3a3033;
+    }
+
+
+    [data-theme="dark"]
+    .support-floating-label {
+
+        background: #211c1e;
+
+        color: #f7eeee;
+
+        border-color: #3a3033;
+    }
+
+
+    /* =====================================================
+       SUPPORT MOBILE
+    ====================================================== */
+
+    @media (max-width: 600px) {
+
+        .support-floating-btn {
+
+            width: 56px;
+
+            height: 56px;
+
+            right: 18px;
+
+            bottom: 18px;
+
+            font-size: 22px;
+        }
+
+
+        .support-floating-label {
+
+            display: none;
+        }
+
+
+        .support-popup {
+
+            left: 10px;
+
+            right: 10px;
+
+            bottom: 85px;
+
+            width: auto;
+
+            height:
+                calc(100vh - 110px);
+
+            max-height: 720px;
+
+            border-radius: 22px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+
+    <!-- BRAND -->
+
+    <a
+        href="index.html"
+        class="brand"
+    >
+
+        <span class="brand-mark">
+            L
+        </span>
+
+        <span>
+            LUSTRE
+        </span>
+
+    </a>
+
+
+    <!-- MOBILE MENU -->
+
+    <button
+        class="menu-toggle"
+        onclick="toggleMenu()"
+    >
+        ☰
+    </button>
+
+
+    <!-- NAVIGATION -->
+
+    <nav
+        class="nav"
+        id="nav"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="gallery.html">
+            Gallery
+        </a>
+
+        <a href="booking.html">
+            Book
+        </a>
+
+        <a
+            href="contact.html"
+            class="active"
+        >
+            Contact
+        </a>
+
+
+        <!-- DARK MODE -->
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            onclick="toggleTheme()"
+        >
+            ☾
+        </button>
+
+
+        <!-- BOOKING CTA -->
+
+        <a
+            href="booking.html"
+            class="nav-cta"
+        >
+            Book appointment ↗
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         PAGE HERO
+    ================================================= -->
+
+    <section class="page-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                COME SAY HELLO
+            </p>
+
+
+            <h1>
+                Let's make
+                <br>
+                <em>something lovely.</em>
+            </h1>
+
+
+            <p>
+                Have a question, want to discuss a custom
+                design, or simply want to book?
+                We'd love to hear from you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT SECTION
+    ================================================= -->
+
+    <section class="section">
+
+        <div class="contact-grid">
+
+
+            <!-- =========================
+                 VISIT
+            ========================== -->
+
+            <div class="contact-card">
+
+                <p class="eyebrow">
+                    VISIT
+                </p>
+
+
+                <h3>
+                    Lustre Nail Studio
+                </h3>
+
+
+                <p>
+                    24 Rose Avenue
+                    <br>
+                    Kolkata, West Bengal
+                </p>
+
+
+                <div class="map-placeholder">
+                    MAP / STUDIO LOCATION
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 HOURS + CONTACT
+            ========================== -->
+
+            <div>
+
+
+                <!-- HOURS -->
+
+                <div class="contact-card">
+
+                    <p class="eyebrow">
+                        HOURS
+                    </p>
+
+
+                    <h3>
+                        When we're here
+                    </h3>
+
+
+                    <p>
+                        Monday — Saturday
+                        <br>
+                        10:00 AM — 7:00 PM
+
+                        <br>
+                        <br>
+
+                        Sunday
+                        <br>
+                        By appointment
+                    </p>
+
+                </div>
+
+
+                <br>
+
+
+                <!-- SAY HELLO -->
+
+                <div class="contact-card">
+
+                    <p class="eyebrow">
+                        SAY HELLO
+                    </p>
+
+
+                    <h3>
+                        Get in touch
+                    </h3>
+
+
+                    <p>
+                        +91 98765 43210
+                        <br>
+                        hello@lustrestudio.in
+
+                        <br>
+                        <br>
+
+                        Instagram · @lustrestudio
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer
+    class="footer"
+    id="contact"
+>
+
+    <div class="footer-top">
+
+
+        <!-- BRAND -->
+
+        <div>
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <span class="brand-mark">
+                    L
+                </span>
+
+                <span>
+                    LUSTRE
+                </span>
+
+            </a>
+
+
+            <p>
+                Modern nail art & mindful beauty
+                <br>
+                in the heart of the city.
+            </p>
+
+        </div>
+
+
+        <!-- VISIT -->
+
+        <div>
+
+            <h4>
+                Visit
+            </h4>
+
+
+            <p>
+                24 Rose Avenue
+                <br>
+                Kolkata, West Bengal
+            </p>
+
+        </div>
+
+
+        <!-- HOURS -->
+
+        <div>
+
+            <h4>
+                Hours
+            </h4>
+
+
+            <p>
+                Mon–Sat · 10 AM–7 PM
+                <br>
+                Sunday · By appointment
+            </p>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div>
+
+            <h4>
+                Say hello
+            </h4>
+
+
+            <p>
+                +91 98765 43210
+                <br>
+                hello@lustrestudio.in
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Lustre Nail Studio
+        </span>
+
+
+        <span>
+            Instagram · Privacy · Terms
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     CUSTOMER SUPPORT FLOATING BUTTON
+====================================================== -->
+
+<button
+    class="support-floating-btn"
+    id="supportFloatingBtn"
+    onclick="toggleSupport()"
+    aria-label="Open Lustre Customer Support"
+>
+    💬
+</button>
+
+
+<!-- =====================================================
+     NEED HELP LABEL
+====================================================== -->
+
+<div
+    class="support-floating-label"
+    id="supportFloatingLabel"
+>
+    Need help? 💗
+</div>
+
+
+<!-- =====================================================
+     CUSTOMER SUPPORT POPUP
+====================================================== -->
+
+<div
+    class="support-popup"
+    id="supportPopup"
+>
+
+
+    <!-- CLOSE BUTTON -->
+
+    <button
+        class="support-close"
+        onclick="toggleSupport()"
+        aria-label="Close customer support"
+    >
+        ×
+    </button>
+
+
+    <!-- SUPPORT PAGE -->
+
+    <iframe
+        src="support.html"
+        title="Lustre Customer Support"
+    ></iframe>
+
+
+</div>
+
+
+<!-- =====================================================
+     MAIN JAVASCRIPT
+====================================================== -->
+
+<script src="js/script.js"></script>
+
+
+<!-- =====================================================
+     CUSTOMER SUPPORT JAVASCRIPT
+====================================================== -->
+
+<script>
+
+    /* =====================================================
+       CUSTOMER SUPPORT
+    ====================================================== */
+
+    const supportPopup =
+        document.getElementById("supportPopup");
+
+
+    const supportLabel =
+        document.getElementById("supportFloatingLabel");
+
+
+    function toggleSupport() {
+
+        supportPopup.classList.toggle("open");
+
+
+        /*
+         * Hide the "Need help?" label when
+         * the support chatbot is open.
+         */
+
+        if (
+            supportPopup.classList.contains("open")
+        ) {
+
+            supportLabel.style.display = "none";
+
+        } else {
+
+            supportLabel.style.display = "";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CLOSE SUPPORT WITH ESCAPE
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                supportPopup.classList.contains("open")
+            ) {
+
+                toggleSupport();
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
